@@ -153,15 +153,15 @@ version = "0.1.0"
 dependencies = [
  "approx",
  "criterion",
- "hodgkin-huxley 0.1.0",
- "iit",
+ "hodgkin-huxley 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "iit 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "nalgebra 0.33.2",
  "ndarray",
- "neural-dynamics",
+ "neural-dynamics 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "rayon",
  "serde",
- "synapse-models 0.1.0",
- "tda",
+ "synapse-models 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "tda 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
@@ -424,6 +424,26 @@ dependencies = [
 ]
 
 [[package]]
+name = "iit"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d29d7089551891e3a3faf3252af1ba13344aab8822a73b0a42b760d5c917c6ad"
+dependencies = [
+ "itertools 0.13.0",
+ "lru",
+ "nalgebra 0.33.2",
+ "ndarray",
+ "num-complex",
+ "rand 0.8.5",
+ "rand_distr",
+ "rayon",
+ "serde",
+ "serde_json",
+ "statrs",
+ "thiserror",
+]
+
+[[package]]
 name = "indexmap"
 version = "2.12.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -606,6 +626,29 @@ dependencies = [
  "num-complex",
  "petgraph",
  "proptest",
+ "rand 0.8.5",
+ "rand_distr",
+ "rayon",
+ "serde",
+ "serde_json",
+ "statrs",
+ "synapse-models 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "thiserror",
+]
+
+[[package]]
+name = "neural-dynamics"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e63c67d48a0c92c4ecff85d16a055abd0cff834b278a3a1f606580b376bb6581"
+dependencies = [
+ "anyhow",
+ "crossbeam",
+ "hodgkin-huxley 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "nalgebra 0.33.2",
+ "ndarray",
+ "num-complex",
+ "petgraph",
  "rand 0.8.5",
  "rand_distr",
  "rayon",
@@ -1101,6 +1144,20 @@ version = "0.1.0"
 dependencies = [
  "approx",
  "criterion",
+ "itertools 0.12.1",
+ "nalgebra 0.33.2",
+ "num-traits",
+ "petgraph",
+ "rayon",
+ "thiserror",
+]
+
+[[package]]
+name = "tda"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2330147a8c9084e53efd1011cda42ffeec45b692a794f67e57089aa30bfefba5"
+dependencies = [
  "itertools 0.12.1",
  "nalgebra 0.33.2",
  "num-traits",

@@ -11,11 +11,11 @@ categories = ["science", "simulation"]
 readme = "README.md"
 
 [dependencies]
-hodgkin-huxley = { path = "../hodgkin-huxley" }
-iit = { path = "../iit" }
-tda = { path = "../tda" }
-synapse-models = { path = "../synapse-models" }
-neural-dynamics = { path = "../neural-dynamics" }
+hodgkin-huxley = "0.1.0"
+iit = "0.1.0"
+tda = "0.1.0"
+synapse-models = "0.1.0"
+neural-dynamics = "0.1.0"
 
 # Re-export core dependencies
 nalgebra = { workspace = true }

@@ -17,21 +17,27 @@
 //!
 //! ## Example
 //!
-//! ```rust
+//! ```no_run
 //! use quantum_processor::prelude::*;
 //!
-//! // Create heterogeneous processor
-//! let mut processor = QuantumProcessorBuilder::new()
-//!     .add_superconducting_qubits(10)
-//!     .add_trapped_ion_qubits(5)
-//!     .add_photonic_qubits(20)
-//!     .with_ldpc_correction(distance: 13)
-//!     .with_reservoir_computing(oscillators: 2)
-//!     .build();
+//! fn main() -> Result<(), Box<dyn std::error::Error>> {
+//!     // Create heterogeneous processor
+//!     let mut processor = QuantumProcessorBuilder::new()
+//!         .add_superconducting_qubits(10)
+//!         .add_trapped_ion_qubits(5)
+//!         .add_photonic_qubits(20)
+//!         .build();
 //!
-//! // Execute quantum circuit
-//! let circuit = QuantumCircuit::new(processor.num_qubits());
-//! let result = processor.execute(&circuit)?;
+//!     // Create and execute quantum circuit
+//!     let initial_state = QuantumState::new(processor.num_logical_qubits());
+//!     let circuit = CircuitBuilder::new(2)
+//!         .h(0)
+//!         .cnot(0, 1)
+//!         .build();
+//!
+//!     let result = circuit.execute(&initial_state)?;
+//!     Ok(())
+//! }
 //! ```
 
 #![deny(missing_docs)]

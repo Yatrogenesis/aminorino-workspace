@@ -153,14 +153,14 @@ version = "0.1.0"
 dependencies = [
  "approx",
  "criterion",
- "hodgkin-huxley",
+ "hodgkin-huxley 0.1.0",
  "iit",
  "nalgebra 0.33.2",
  "ndarray",
  "neural-dynamics",
  "rayon",
  "serde",
- "synapse-models",
+ "synapse-models 0.1.0",
  "tda",
 ]
 
@@ -385,6 +385,24 @@ dependencies = [
 ]
 
 [[package]]
+name = "hodgkin-huxley"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "12d494b7c5cd28696ff7c5347c59e31097bd1e2326a4f795dd7370f4a02d6ea8"
+dependencies = [
+ "nalgebra 0.33.2",
+ "ndarray",
+ "num-complex",
+ "rand 0.8.5",
+ "rand_distr",
+ "rayon",
+ "serde",
+ "serde_json",
+ "statrs",
+ "thiserror",
+]
+
+[[package]]
 name = "iit"
 version = "0.1.0"
 dependencies = [
@@ -582,7 +600,7 @@ dependencies = [
  "approx",
  "criterion",
  "crossbeam",
- "hodgkin-huxley",
+ "hodgkin-huxley 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "nalgebra 0.33.2",
  "ndarray",
  "num-complex",
@@ -594,7 +612,7 @@ dependencies = [
  "serde",
  "serde_json",
  "statrs",
- "synapse-models",
+ "synapse-models 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "thiserror",
 ]
 
@@ -1061,6 +1079,17 @@ name = "synapse-models"
 version = "0.1.0"
 dependencies = [
  "approx",
+ "nalgebra 0.33.2",
+ "rand 0.8.5",
+ "thiserror",
+]
+
+[[package]]
+name = "synapse-models"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f1019aa7d436c4c6cfbb1c553303240550301ff294cf21246d3b63ad697db669"
+dependencies = [
  "nalgebra 0.33.2",
  "rand 0.8.5",
  "thiserror",

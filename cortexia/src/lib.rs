@@ -220,9 +220,6 @@ pub mod prelude {
     // Hodgkin-Huxley
     pub use hodgkin_huxley::{
         HodgkinHuxleyNeuron,
-        NeuronType,
-        SodiumChannel,
-        PotassiumChannel,
     };
 
     // IIT
@@ -235,28 +232,23 @@ pub mod prelude {
 
     // TDA
     pub use tda::{
-        PersistentHomology,
         PersistenceDiagram,
         MapperBuilder,
         SpikeTrain,
+        PersistentPair,
     };
 
     // Synapse Models
     pub use synapse_models::{
         Synapse,
-        Neurotransmitter,
-        PlasticityRule,
-        AMPAReceptor,
-        NMDAReceptor,
+        SynapseBuilder,
+        SynapseType,
     };
 
     // Neural Dynamics
     pub use neural_dynamics::{
         Network,
         NetworkBuilder,
-        NeuralPopulation,
-        ConnectionPattern,
-        SynapseType,
     };
 }
 

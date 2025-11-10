@@ -1,0 +1,59 @@
+[package]
+name = "quantum-processor"
+version = "0.1.0"
+edition = "2021"
+authors = ["Francisco Molina Burgos <fmolina@avermex.com>"]
+license = "MIT OR Apache-2.0"
+description = "Heterogeneous quantum processor simulator with LDPC error correction, quantum reservoir computing, and distributed chaos architecture"
+repository = "https://github.com/Yatrogenesis/cortexia-workspace"
+keywords = ["quantum", "processor", "simulation", "heterogeneous", "ldpc"]
+categories = ["science", "simulation"]
+
+[dependencies]
+# Core numeric libraries
+num-complex = { version = "0.4", features = ["serde"] }
+ndarray = { version = "0.15", features = ["serde"] }
+nalgebra = "0.32"
+
+# Random number generation
+rand = "0.8"
+rand_distr = "0.4"
+
+# Graph algorithms for LDPC and architecture
+petgraph = "0.6"
+
+# Parallel computation
+rayon = "1.8"
+crossbeam = "0.8"
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+toml = "0.8"
+
+# FFT for quantum reservoir and holographic operations
+rustfft = "6.1"
+
+# Logging and telemetry
+log = "0.4"
+env_logger = "0.11"
+
+# LISP integration (using steel for Rust)
+steel-core = { version = "0.5", optional = true }
+
+# Error handling
+thiserror = "1.0"
+anyhow = "1.0"
+
+[dev-dependencies]
+criterion = { version = "0.5", features = ["html_reports"] }
+approx = "0.5"
+proptest = "1.4"
+
+[features]
+default = ["ldpc", "reservoir", "radiation"]
+ldpc = []
+reservoir = []
+radiation = []
+lisp-optimization = ["steel-core"]
+experimental = []

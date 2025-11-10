@@ -6,7 +6,8 @@ members = [
     "tda",
     "synapse-models",
     "neural-dynamics",
-    "cortexia"
+    "cortexia",
+    "quantum-processor"
 ]
 
 [workspace.package]

@@ -90,7 +90,6 @@ pub use repertoire::{Direction, Repertoire};
 
 use ndarray::{Array, ArrayD, IxDyn};
 use serde::{Deserialize, Serialize};
-use std::sync::{Arc, Mutex};
 
 /// The main IIT system structure.
 ///

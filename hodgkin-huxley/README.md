@@ -253,6 +253,6 @@ If you use this library in your research, please cite:
   title = {hodgkin-huxley: A Rust implementation of the Hodgkin-Huxley neuron model},
   author = {Your Name},
   year = {2024},
-  url = {https://github.com/aminorino/hodgkin-huxley}
+  url = {https://github.com/cortexia/hodgkin-huxley}
 }
 ```

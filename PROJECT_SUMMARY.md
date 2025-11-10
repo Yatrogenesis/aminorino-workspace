@@ -1,8 +1,8 @@
-# AMINORINO Framework - Complete Implementation Summary
+# CORTEXIA Framework - Complete Implementation Summary
 
 **Generated**: 2025-11-10
-**Authors**: Francisco Molina Burgos, Claude-AMINORINO
-**Repository**: https://github.com/Yatrogenesis/aminorino-workspace
+**Authors**: Francisco Molina Burgos, Claude-CORTEXIA
+**Repository**: https://github.com/Yatrogenesis/cortexia-workspace
 
 ---
 
@@ -26,13 +26,13 @@ Successfully implemented a complete, production-ready computational neuroscience
 ## 🏗️ Architecture Overview
 
 ```
-aminorino-workspace/
+cortexia-workspace/
 ├── hodgkin-huxley/      # Biophysical neuron models (2,702 LOC)
 ├── iit/                 # Integrated Information Theory (3,370 LOC)
 ├── tda/                 # Topological Data Analysis (3,286 LOC)
 ├── synapse-models/      # Synaptic dynamics (3,900 LOC)
 ├── neural-dynamics/     # Network simulation (4,000 LOC)
-└── aminorino/           # Meta-crate (293 LOC)
+└── cortexia/           # Meta-crate (293 LOC)
 ```
 
 ---
@@ -213,7 +213,7 @@ aminorino-workspace/
 
 ---
 
-### 6. aminorino (293 lines)
+### 6. cortexia (293 lines)
 
 **Purpose**: Meta-crate integrating all libraries
 
@@ -238,7 +238,7 @@ aminorino-workspace/
 | tda | 35 | 0 | 0 | ✅ PASS |
 | synapse-models | 68 | 9 | 3 | ✅ PASS |
 | neural-dynamics | 66 | 0 | 0 | ⚠️ 9 FAIL* |
-| aminorino | 2 | 0 | 0 | ✅ PASS |
+| cortexia | 2 | 0 | 0 | ✅ PASS |
 | **Total** | **207** | **39+** | **18** | **95%+** |
 
 *9 failures in neural-dynamics due to numerical stability at high current inputs (not architectural issues)
@@ -276,7 +276,7 @@ aminorino-workspace/
 - ✅ tda/README.md + summaries
 - ✅ synapse-models/README.md + IMPLEMENTATION_SUMMARY.md
 - ✅ neural-dynamics/ (inline documentation)
-- ✅ aminorino/ (extensive lib.rs docs)
+- ✅ cortexia/ (extensive lib.rs docs)
 
 ### Documentation Coverage
 - 100% of public APIs documented
@@ -351,7 +351,7 @@ aminorino-workspace/
 ## 📦 Deliverables
 
 ### GitHub Repository
-✅ **Published**: https://github.com/Yatrogenesis/aminorino-workspace
+✅ **Published**: https://github.com/Yatrogenesis/cortexia-workspace
 
 ### Repository Contents
 - 6 complete Rust crates
@@ -413,7 +413,7 @@ aminorino-workspace/
 
 **Built by**:
 - Francisco Molina Burgos (Yatrogenesis)
-- Claude-AMINORINO (Anthropic)
+- Claude-CORTEXIA (Anthropic)
 
 **Powered by**:
 - Rust programming language
@@ -439,7 +439,7 @@ Choose whichever license best suits your needs.
 
 ## 🔗 Links
 
-- **GitHub**: https://github.com/Yatrogenesis/aminorino-workspace
+- **GitHub**: https://github.com/Yatrogenesis/cortexia-workspace
 - **Author**: Francisco Molina Burgos
 - **Email**: pako.molina@gmail.com
 - **ORCID**: 0009-0008-6093-8267

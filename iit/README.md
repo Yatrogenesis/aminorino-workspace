@@ -283,10 +283,10 @@ If you use this library in academic work, please cite:
 
 ```bibtex
 @software{iit_rust,
-  author = {Francisco Molina Burgos and Claude-AMINORINO},
+  author = {Francisco Molina Burgos and Claude-CORTEXIA},
   title = {IIT: Integrated Information Theory 3.0 in Rust},
   year = {2024},
-  url = {https://github.com/aminorino/iit}
+  url = {https://github.com/cortexia/iit}
 }
 ```
 

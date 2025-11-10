@@ -5,7 +5,6 @@
 //! and manipulating simplicial complexes in the context of persistent homology.
 
 use crate::error::{Result, TdaError};
-use itertools::Itertools;
 use std::collections::{HashMap, HashSet};
 
 /// Represents a simplex as a sorted vector of vertex indices.

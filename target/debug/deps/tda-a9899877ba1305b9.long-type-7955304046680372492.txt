@@ -1,0 +1,1 @@
+Option<Box<dyn for<'a> Fn(&'a Matrix<f64, Dyn, Dyn, VecStorage<f64, Dyn, Dyn>>, usize) -> Vec<f64> + Send + Sync>>

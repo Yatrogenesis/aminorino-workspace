@@ -207,9 +207,11 @@ impl NeuromodulatorState {
 #[derive(Debug, Clone, Copy)]
 struct DelayedSpike {
     /// Target neuron ID.
+    #[allow(dead_code)]
     target_neuron: usize,
 
     /// Connection index.
+    #[allow(dead_code)]
     connection_idx: usize,
 
     /// Arrival time (ms).

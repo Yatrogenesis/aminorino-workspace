@@ -6,15 +6,15 @@ members = [
     "tda",
     "synapse-models",
     "neural-dynamics",
-    "aminorino"
+    "cortexia"
 ]
 
 [workspace.package]
 version = "0.1.0"
 edition = "2021"
-authors = ["Francisco Molina Burgos <pako.molina@gmail.com>", "Claude-AMINORINO <claude-aminorino@anthropic.com>"]
+authors = ["Francisco Molina Burgos <pako.molina@gmail.com>", "Claude-CORTEXIA <claude-cortexia@anthropic.com>"]
 license = "MIT OR Apache-2.0"
-repository = "https://github.com/Yatrogenesis/aminorino-workspace"
+repository = "https://github.com/Yatrogenesis/cortexia-workspace"
 
 [workspace.dependencies]
 # Matemática y Álgebra Lineal

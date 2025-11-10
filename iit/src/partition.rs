@@ -11,7 +11,6 @@
 //! cause-effect repertoire and the partitioned repertoire.
 
 use crate::error::{IITError, Result};
-use itertools::Itertools;
 use rayon::prelude::*;
 use serde::{Deserialize, Serialize};
 use std::collections::{HashMap, HashSet};

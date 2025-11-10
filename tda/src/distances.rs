@@ -87,11 +87,12 @@ pub fn correlation_distance_matrix(data: &DMatrix<f64>) -> Result<DMatrix<f64>> 
     let distances: Vec<(usize, usize, f64)> = (0..n)
         .into_par_iter()
         .flat_map(|i| {
+            let means_clone = means.clone();
             (i + 1..n).into_par_iter().map(move |j| {
                 let x = data.row(i);
                 let y = data.row(j);
-                let mean_x = means[i];
-                let mean_y = means[j];
+                let mean_x = means_clone[i];
+                let mean_y = means_clone[j];
 
                 let mut numerator = 0.0;
                 let mut sum_sq_x = 0.0;

@@ -4,7 +4,7 @@
 //! how topological features (connected components, loops, voids) appear and disappear
 //! as a parameter varies in a filtered simplicial complex.
 
-use crate::error::{Result, TdaError};
+use crate::error::Result;
 use crate::simplicial_complex::{FilteredSimplex, SimplicialComplex};
 use std::collections::HashMap;
 
@@ -72,7 +72,7 @@ impl UnionFind {
             return None;
         }
 
-        let (younger, older) = if self.birth_time[root_x] > self.birth_time[root_y] {
+        let (younger, _older) = if self.birth_time[root_x] > self.birth_time[root_y] {
             (root_x, root_y)
         } else {
             (root_y, root_x)

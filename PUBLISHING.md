@@ -1,6 +1,6 @@
 # Guía de Publicación en crates.io
 
-Esta guía te ayudará a publicar las librerías AMINORINO en crates.io.
+Esta guía te ayudará a publicar las librerías CORTEXIA en crates.io.
 
 ## ⚠️ Estado Actual
 
@@ -37,7 +37,7 @@ hodgkin-huxley = "0.1.0"
 synapse-models = "0.1.0"
 ```
 
-#### En `aminorino/Cargo.toml`:
+#### En `cortexia/Cargo.toml`:
 ```toml
 # ACTUAL (no funciona en crates.io):
 [dependencies]
@@ -105,10 +105,10 @@ cargo publish --dry-run
 cargo publish
 ```
 
-### Paso 3: Actualizar aminorino (meta-crate)
+### Paso 3: Actualizar cortexia (meta-crate)
 
 ```bash
-cd ../aminorino
+cd ../cortexia
 ```
 
 **Edita `Cargo.toml` y cambia:**
@@ -177,7 +177,7 @@ echo "✅ Las librerías base están listas para publicación"
 echo ""
 echo "⚠️  RECUERDA: Debes actualizar las dependencias de:"
 echo "   - neural-dynamics"
-echo "   - aminorino"
+echo "   - cortexia"
 echo "   Después de publicar las librerías base."
 ```
 
@@ -222,18 +222,18 @@ cargo publish --dry-run --package synapse-models
 - Publicación de 4 librerías base: 10 minutos
 - Actualizar dependencias: 5 minutos
 - Publicar neural-dynamics: 3 minutos
-- Publicar aminorino: 3 minutos
+- Publicar cortexia: 3 minutos
 
 **Total**: ~30 minutos
 
 ## 🆘 Troubleshooting
 
 ### Error: "repository not found"
-Las URLs de repositorio apuntan a `https://github.com/aminorino/...` pero deberían ser `https://github.com/Yatrogenesis/aminorino-workspace/tree/main/CRATE_NAME`
+Las URLs de repositorio apuntan a `https://github.com/cortexia/...` pero deberían ser `https://github.com/Yatrogenesis/cortexia-workspace/tree/main/CRATE_NAME`
 
 **Solución**: Actualizar cada `Cargo.toml`:
 ```toml
-repository = "https://github.com/Yatrogenesis/aminorino-workspace/tree/main/hodgkin-huxley"
+repository = "https://github.com/Yatrogenesis/cortexia-workspace/tree/main/hodgkin-huxley"
 ```
 
 ### Error: "failed to verify package"
@@ -254,7 +254,7 @@ El nombre ya está tomado en crates.io.
 
 **Solución**: Cambiar el nombre o agregar prefijo:
 ```toml
-name = "aminorino-hodgkin-huxley"
+name = "cortexia-hodgkin-huxley"
 ```
 
 ## 📚 Referencias
@@ -271,11 +271,11 @@ Las librerías estarán disponibles en:
 - https://crates.io/crates/tda
 - https://crates.io/crates/synapse-models
 - https://crates.io/crates/neural-dynamics
-- https://crates.io/crates/aminorino
+- https://crates.io/crates/cortexia
 
 Y los usuarios podrán instalarlas con:
 ```bash
-cargo add aminorino
+cargo add cortexia
 ```
 
 ---

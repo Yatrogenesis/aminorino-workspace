@@ -5,6 +5,9 @@ edition.workspace = true
 authors.workspace = true
 license.workspace = true
 repository.workspace = true
+description = "Biophysical synapse models for neural simulations with short-term plasticity"
+keywords = ["neuroscience", "synapse", "plasticity", "neural-network", "simulation"]
+categories = ["science", "simulation"]
 
 [dependencies]
 nalgebra = "0.33"

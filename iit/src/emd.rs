@@ -13,7 +13,6 @@
 use crate::error::{IITError, Result};
 use crate::repertoire::Repertoire;
 use ndarray::ArrayD;
-use std::cmp::Ordering;
 
 /// Compute Earth Mover's Distance between two repertoires.
 ///
@@ -131,7 +130,7 @@ pub fn emd_greedy(r1: &Repertoire, r2: &Repertoire) -> Result<f64> {
         ));
     }
 
-    let n = r1.n_states();
+    let _n = r1.n_states();
 
     // Create list of (state_index, probability) pairs
     let mut supply: Vec<_> = r1
@@ -171,8 +170,8 @@ pub fn emd_greedy(r1: &Repertoire, r2: &Repertoire) -> Result<f64> {
         }
 
         // Move as much as possible
-        let (s_idx, s_prob) = supply[best_s];
-        let (d_idx, d_prob) = demand[best_d];
+        let (_s_idx, s_prob) = supply[best_s];
+        let (_d_idx, d_prob) = demand[best_d];
         let amount = s_prob.min(d_prob);
 
         total_cost += amount * min_dist;
@@ -239,7 +238,7 @@ pub fn mutual_information(
 /// Effective information: mutual information between cause and effect.
 ///
 /// This measures how much information the cause provides about the effect.
-pub fn effective_information(cause: &Repertoire, effect: &Repertoire) -> Result<f64> {
+pub fn effective_information(_cause: &Repertoire, effect: &Repertoire) -> Result<f64> {
     // For now, use entropy difference as approximation
     // Full implementation would compute I(cause; effect)
     let h_effect = effect.entropy();

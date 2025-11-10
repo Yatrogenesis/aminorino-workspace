@@ -1,6 +1,6 @@
-# AMINORINO Framework
+# CORTEXIA Framework
 
-**Advanced Mind Integration: Neurological Operations & Rational Intelligence Native Optimization**
+**Computational Orchestration for Reality Transformation: EXtended Intelligence Architecture**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
@@ -9,7 +9,7 @@ A comprehensive Rust framework for computational neuroscience, consciousness ana
 
 ## 🧠 Overview
 
-AMINORINO provides a complete toolkit for:
+CORTEXIA provides a complete toolkit for:
 
 - **Biophysical neural simulation** with exact Hodgkin-Huxley dynamics
 - **Consciousness quantification** using Integrated Information Theory (IIT 3.0)
@@ -22,13 +22,13 @@ AMINORINO provides a complete toolkit for:
 This is a Rust workspace containing 6 crates:
 
 ```
-aminorino-workspace/
+cortexia-workspace/
 ├── hodgkin-huxley/      # Biophysical neuron models
 ├── iit/                 # Integrated Information Theory
 ├── tda/                 # Topological Data Analysis
 ├── synapse-models/      # Synaptic dynamics
 ├── neural-dynamics/     # Network simulation
-└── aminorino/           # Meta-crate (re-exports all)
+└── cortexia/           # Meta-crate (re-exports all)
 ```
 
 ## 🚀 Quick Start
@@ -39,25 +39,25 @@ Add to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-aminorino = { git = "https://github.com/aminorino/aminorino" }
+cortexia = { git = "https://github.com/cortexia/cortexia" }
 ```
 
 Or add individual crates:
 
 ```toml
 [dependencies]
-hodgkin-huxley = { git = "https://github.com/aminorino/hodgkin-huxley" }
-iit = { git = "https://github.com/aminorino/iit" }
-tda = { git = "https://github.com/aminorino/tda" }
-synapse-models = { git = "https://github.com/aminorino/synapse-models" }
-neural-dynamics = { git = "https://github.com/aminorino/neural-dynamics" }
+hodgkin-huxley = { git = "https://github.com/cortexia/hodgkin-huxley" }
+iit = { git = "https://github.com/cortexia/iit" }
+tda = { git = "https://github.com/cortexia/tda" }
+synapse-models = { git = "https://github.com/cortexia/synapse-models" }
+neural-dynamics = { git = "https://github.com/cortexia/neural-dynamics" }
 ```
 
 ### Build from Source
 
 ```bash
-git clone https://github.com/aminorino/aminorino-workspace
-cd aminorino-workspace
+git clone https://github.com/cortexia/cortexia-workspace
+cd cortexia-workspace
 cargo build --release
 cargo test --all
 ```
@@ -67,7 +67,7 @@ cargo test --all
 ### Simulate a Neuron
 
 ```rust
-use aminorino::prelude::*;
+use cortexia::prelude::*;
 
 let mut neuron = HodgkinHuxleyNeuron::regular_spiking();
 for _ in 0..1000 {
@@ -81,7 +81,7 @@ for _ in 0..1000 {
 ### Calculate Consciousness (Φ)
 
 ```rust
-use aminorino::prelude::*;
+use cortexia::prelude::*;
 
 let mut system = IITSystem::new(10);
 system.set_fully_connected(true).unwrap();
@@ -94,7 +94,7 @@ println!("Integrated Information Φ = {:.4}", result.phi);
 ### Build a Neural Network
 
 ```rust
-use aminorino::prelude::*;
+use cortexia::prelude::*;
 
 let mut network = NetworkBuilder::new(0.1)?
     .add_excitatory_population("E", 800)?
@@ -209,14 +209,14 @@ Contributions are welcome! Please:
 
 ## 📖 Citation
 
-If you use AMINORINO in your research, please cite:
+If you use CORTEXIA in your research, please cite:
 
 ```bibtex
-@software{aminorino2025,
-  title = {AMINORINO: Advanced Mind Integration Framework},
-  author = {Molina Burgos, Francisco and Claude-AMINORINO},
+@software{cortexia2025,
+  title = {CORTEXIA: Advanced Mind Integration Framework},
+  author = {Molina Burgos, Francisco and Claude-CORTEXIA},
   year = {2025},
-  url = {https://github.com/aminorino/aminorino}
+  url = {https://github.com/cortexia/cortexia}
 }
 ```
 
@@ -231,9 +231,9 @@ at your option.
 
 ## 🔗 Links
 
-- **GitHub Organization**: https://github.com/aminorino
+- **GitHub Organization**: https://github.com/cortexia
 - **Documentation**: (Will be available on docs.rs after publication)
-- **Issue Tracker**: https://github.com/aminorino/aminorino-workspace/issues
+- **Issue Tracker**: https://github.com/cortexia/cortexia-workspace/issues
 
 ## ⚠️ Disclaimer
 
@@ -257,4 +257,4 @@ Based on research by:
 
 ---
 
-**Made with 🧠 and ⚡ by the AMINORINO project**
+**Made with 🧠 and ⚡ by the CORTEXIA project**

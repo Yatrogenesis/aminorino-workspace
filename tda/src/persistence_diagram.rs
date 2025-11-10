@@ -167,7 +167,7 @@ pub fn bottleneck_distance(
     // Simple greedy matching (not optimal but reasonable approximation)
     let mut matched1 = vec![false; n];
     let mut matched2 = vec![false; m];
-    let mut max_distance = 0.0;
+    let mut max_distance: f64 = 0.0;
 
     // Sort pairs by distance
     let mut pairs: Vec<(usize, usize, f64)> = Vec::new();

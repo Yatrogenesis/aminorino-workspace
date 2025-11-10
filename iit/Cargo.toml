@@ -4,7 +4,7 @@ version.workspace = true
 edition.workspace = true
 authors.workspace = true
 license.workspace = true
-repository = "https://github.com/aminorino/iit"
+repository = "https://github.com/Yatrogenesis/cortexia-workspace"
 description = "Complete Integrated Information Theory (IIT) 3.0 library for calculating Phi and analyzing consciousness in neural systems"
 keywords = ["neuroscience", "consciousness", "integrated-information", "phi", "iit"]
 categories = ["science", "algorithms"]
@@ -12,7 +12,7 @@ readme = "README.md"
 
 [dependencies]
 nalgebra = { workspace = true }
-ndarray = { workspace = true }
+ndarray = { workspace = true, features = ["serde"] }
 num-complex = { workspace = true }
 statrs = { workspace = true }
 rayon = { workspace = true }

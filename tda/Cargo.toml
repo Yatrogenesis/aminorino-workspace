@@ -5,6 +5,9 @@ edition.workspace = true
 authors.workspace = true
 license.workspace = true
 repository.workspace = true
+description = "Topological Data Analysis for neural networks - persistent homology and topological features"
+keywords = ["topology", "homology", "neuroscience", "data-analysis", "tda"]
+categories = ["science", "algorithms"]
 
 [dependencies]
 nalgebra = "0.33"

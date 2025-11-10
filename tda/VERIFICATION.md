@@ -219,7 +219,7 @@ Note: Build verification requires Rust toolchain to be installed.
 The implementation is complete and should build successfully with:
 
 ```bash
-cd /Users/yatrogenesis/aminorino-workspace
+cd /Users/yatrogenesis/cortexia-workspace
 cargo build --package tda
 cargo test --package tda
 ```

@@ -22,7 +22,7 @@ use crate::emd::earth_movers_distance;
 use crate::error::{IITError, Result};
 use crate::partition::{find_mip, CutType, Partition, PartitionInfo};
 use crate::repertoire::{cause_repertoire, effect_repertoire, Repertoire};
-use nalgebra::{DMatrix, DVector};
+use nalgebra::DMatrix;
 use ndarray::ArrayD;
 use rayon::prelude::*;
 use serde::{Deserialize, Serialize};
@@ -246,7 +246,7 @@ fn calculate_phi_geometric(connectivity: &[Vec<bool>]) -> Result<f64> {
         }
 
         if in_degree > 0.0 && out_degree > 0.0 {
-            phi += (in_degree * out_degree).sqrt();
+            phi += ((in_degree * out_degree) as f64).sqrt();
         }
     }
 
@@ -278,7 +278,7 @@ fn calculate_phi_spectral(connectivity: &[Vec<bool>]) -> Result<f64> {
     };
 
     // Use spectral gap as approximation
-    let mut eigenvalues: Vec<_> = eigen.eigenvalues.iter().map(|&x| x.abs()).collect();
+    let mut eigenvalues: Vec<f64> = eigen.eigenvalues.iter().map(|x: &f64| x.abs()).collect();
     eigenvalues.sort_by(|a, b| b.partial_cmp(a).unwrap_or(std::cmp::Ordering::Equal));
 
     if eigenvalues.len() < 2 {
@@ -296,7 +296,7 @@ fn calculate_phi_spectral(connectivity: &[Vec<bool>]) -> Result<f64> {
 /// This statistical physics approach approximates interactions.
 fn calculate_phi_mean_field(
     system_state: &[usize],
-    tpm: &ArrayD<f64>,
+    _tpm: &ArrayD<f64>,
     connectivity: &[Vec<bool>],
 ) -> Result<f64> {
     let n = system_state.len();

@@ -8,7 +8,7 @@
 
 use crate::error::{Result, TdaError};
 use nalgebra::DMatrix;
-use petgraph::graph::{Graph, NodeIndex};
+use petgraph::graph::Graph;
 use petgraph::Undirected;
 use std::collections::{HashMap, HashSet};
 
@@ -109,7 +109,7 @@ impl MapperBuilder {
             return Err(TdaError::EmptyDataset);
         }
 
-        let filter = self.filter.ok_or_else(|| {
+        let filter = self.filter.as_ref().ok_or_else(|| {
             TdaError::InvalidParameter("Filter function must be set".to_string())
         })?;
 
@@ -470,7 +470,7 @@ pub mod filters {
     pub fn eccentricity() -> Box<dyn Fn(&DMatrix<f64>, usize) -> Vec<f64> + Send + Sync> {
         Box::new(|data: &DMatrix<f64>, idx: usize| {
             let n = data.nrows();
-            let mut max_dist = 0.0;
+            let mut max_dist: f64 = 0.0;
 
             for i in 0..n {
                 if i != idx {

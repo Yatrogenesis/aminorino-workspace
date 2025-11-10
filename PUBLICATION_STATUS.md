@@ -1,4 +1,4 @@
-# Estado de Publicación de Librerías AMINORINO
+# Estado de Publicación de Librerías CORTEXIA
 
 **Fecha**: 10 de Noviembre, 2025
 **Estado General**: ⚠️ **CASI LISTO - REQUIERE PASOS MANUALES**
@@ -15,7 +15,7 @@
 - ✅ Benchmarks implementados
 
 ### 2. Repositorio GitHub
-- ✅ Repositorio creado: https://github.com/Yatrogenesis/aminorino-workspace
+- ✅ Repositorio creado: https://github.com/Yatrogenesis/cortexia-workspace
 - ✅ Código pusheado a GitHub
 - ✅ README.md completo
 - ✅ LICENSE-MIT creado
@@ -56,51 +56,51 @@ cargo login
 #### `hodgkin-huxley/Cargo.toml` línea 7:
 ```toml
 # CAMBIAR DE:
-repository = "https://github.com/aminorino/hodgkin-huxley"
+repository = "https://github.com/cortexia/hodgkin-huxley"
 
 # A:
-repository = "https://github.com/Yatrogenesis/aminorino-workspace"
+repository = "https://github.com/Yatrogenesis/cortexia-workspace"
 ```
 
 #### `iit/Cargo.toml`:
 ```toml
 # CAMBIAR DE:
-repository = "https://github.com/aminorino/iit"
+repository = "https://github.com/cortexia/iit"
 
 # A:
-repository = "https://github.com/Yatrogenesis/aminorino-workspace"
+repository = "https://github.com/Yatrogenesis/cortexia-workspace"
 ```
 
 #### `tda/Cargo.toml`:
 ```toml
 # CAMBIAR DE:
-repository = "https://github.com/aminorino/tda"
+repository = "https://github.com/cortexia/tda"
 
 # A:
-repository = "https://github.com/Yatrogenesis/aminorino-workspace"
+repository = "https://github.com/Yatrogenesis/cortexia-workspace"
 ```
 
 #### `synapse-models/Cargo.toml`:
 ```toml
 # Agregar:
-repository = "https://github.com/Yatrogenesis/aminorino-workspace"
+repository = "https://github.com/Yatrogenesis/cortexia-workspace"
 description = "Detailed synaptic dynamics with multiple plasticity rules for computational neuroscience"
 ```
 
 #### `neural-dynamics/Cargo.toml`:
 ```toml
 # Agregar:
-repository = "https://github.com/Yatrogenesis/aminorino-workspace"
+repository = "https://github.com/Yatrogenesis/cortexia-workspace"
 description = "Large-scale neural network simulation framework"
 ```
 
-#### `aminorino/Cargo.toml`:
+#### `cortexia/Cargo.toml`:
 ```toml
 # CAMBIAR DE:
-repository = "https://github.com/aminorino/aminorino"
+repository = "https://github.com/cortexia/cortexia"
 
 # A:
-repository = "https://github.com/Yatrogenesis/aminorino-workspace"
+repository = "https://github.com/Yatrogenesis/cortexia-workspace"
 ```
 
 ### Paso 3: Cambiar Dependencias Path → Versión
@@ -117,7 +117,7 @@ hodgkin-huxley = "0.1.0"
 synapse-models = "0.1.0"
 ```
 
-#### En `aminorino/Cargo.toml`:
+#### En `cortexia/Cargo.toml`:
 ```toml
 [dependencies]
 # CAMBIAR DE:
@@ -172,8 +172,8 @@ cd ..
 
 # 4. Esperar ~2 minutos
 
-# 5. Actualizar aminorino/Cargo.toml (Paso 3 arriba)
-cd aminorino
+# 5. Actualizar cortexia/Cargo.toml (Paso 3 arriba)
+cd cortexia
 cargo build --release
 cargo publish --dry-run
 cargo publish
@@ -202,12 +202,12 @@ cd ..
 - [ ] `neural-dynamics` publicado
 
 ### Publicación - Ronda Final (meta-crate)
-- [ ] `aminorino/Cargo.toml` actualizado (path → version)
-- [ ] `aminorino` compilado exitosamente
-- [ ] `aminorino` publicado
+- [ ] `cortexia/Cargo.toml` actualizado (path → version)
+- [ ] `cortexia` compilado exitosamente
+- [ ] `cortexia` publicado
 
 ### Post-publicación
-- [ ] Verificar en https://crates.io/crates/aminorino
+- [ ] Verificar en https://crates.io/crates/cortexia
 - [ ] Actualizar README.md con badges de crates.io
 - [ ] Anunciar en redes sociales / foros Rust
 
@@ -223,7 +223,7 @@ cd ..
 **Causa**: El nombre ya está tomado.
 **Solución**: Cambia el nombre en `Cargo.toml`:
 ```toml
-name = "aminorino-hodgkin-huxley"  # Agregar prefijo
+name = "cortexia-hodgkin-huxley"  # Agregar prefijo
 ```
 
 ### "failed to verify package"
@@ -245,11 +245,11 @@ exclude = ["target/", ".git/", "*.swp"]
 
 set -e  # Exit on error
 
-echo "🚀 Iniciando publicación de AMINORINO..."
+echo "🚀 Iniciando publicación de CORTEXIA..."
 
 # Verificar que estamos en el directorio correcto
 if [ ! -f "Cargo.toml" ]; then
-    echo "❌ Error: Debes ejecutar este script desde aminorino-workspace/"
+    echo "❌ Error: Debes ejecutar este script desde cortexia-workspace/"
     exit 1
 fi
 
@@ -289,8 +289,8 @@ echo ""
 echo "⚠️  AHORA DEBES:"
 echo "1. Actualizar neural-dynamics/Cargo.toml (path → version)"
 echo "2. Ejecutar: cd neural-dynamics && cargo publish"
-echo "3. Actualizar aminorino/Cargo.toml (path → version)"
-echo "4. Ejecutar: cd aminorino && cargo publish"
+echo "3. Actualizar cortexia/Cargo.toml (path → version)"
+echo "4. Ejecutar: cd cortexia && cargo publish"
 ```
 
 ---
@@ -304,11 +304,11 @@ Una vez completado todo, las librerías estarán disponibles en:
 - https://crates.io/crates/tda
 - https://crates.io/crates/synapse-models
 - https://crates.io/crates/neural-dynamics
-- https://crates.io/crates/aminorino
+- https://crates.io/crates/cortexia
 
 Y los usuarios podrán instalar con:
 ```bash
-cargo add aminorino
+cargo add cortexia
 ```
 
 ---

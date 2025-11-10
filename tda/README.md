@@ -336,4 +336,4 @@ MIT OR Apache-2.0
 
 ## Contributing
 
-This library is part of the AMINORINO neuroscience workspace. Contributions are welcome!
+This library is part of the CORTEXIA neuroscience workspace. Contributions are welcome!

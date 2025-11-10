@@ -1,0 +1,28 @@
+[package]
+name = "cortexia"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository = "https://github.com/Yatrogenesis/cortexia-workspace"
+description = "Complete neural-quantum consciousness bridge framework - Computational Orchestration for Reality Transformation: EXtended Intelligence Architecture"
+keywords = ["consciousness", "neuroscience", "quantum", "ai", "cognitive"]
+categories = ["science", "simulation"]
+readme = "README.md"
+
+[dependencies]
+hodgkin-huxley = { path = "../hodgkin-huxley" }
+iit = { path = "../iit" }
+tda = { path = "../tda" }
+synapse-models = { path = "../synapse-models" }
+neural-dynamics = { path = "../neural-dynamics" }
+
+# Re-export core dependencies
+nalgebra = { workspace = true }
+ndarray = { workspace = true }
+rayon = { workspace = true }
+serde = { workspace = true }
+
+[dev-dependencies]
+approx = { workspace = true }
+criterion = { workspace = true }

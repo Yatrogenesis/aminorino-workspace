@@ -266,7 +266,7 @@ synapse-models/
 
 ## Contributing
 
-This library is part of the AMINORINO computational neuroscience toolkit. Contributions are welcome!
+This library is part of the CORTEXIA computational neuroscience toolkit. Contributions are welcome!
 
 ## License
 
@@ -275,7 +275,7 @@ MIT OR Apache-2.0
 ## Authors
 
 - Francisco Molina Burgos
-- Claude-AMINORINO
+- Claude-CORTEXIA
 
 ## Citation
 
@@ -284,9 +284,9 @@ If you use this library in your research, please cite:
 ```bibtex
 @software{synapse_models,
   title = {Synapse Models: A Comprehensive Rust Library for Synaptic Dynamics},
-  author = {Molina Burgos, Francisco and Claude-AMINORINO},
+  author = {Molina Burgos, Francisco and Claude-CORTEXIA},
   year = {2024},
-  url = {https://github.com/aminorino/synapse-models}
+  url = {https://github.com/cortexia/synapse-models}
 }
 ```
 

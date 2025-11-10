@@ -6,11 +6,11 @@
 //! - Functional connectivity from spike data
 //! - Time-windowed topological analysis
 
-use crate::distances::{SpikeTrain, victor_purpura_distance, van_rossum_distance, victor_purpura_matrix};
+use crate::distances::{SpikeTrain, victor_purpura_distance, victor_purpura_matrix};
 use crate::error::{Result, TdaError};
-use crate::persistent_homology::{persistent_homology_rips, PersistentPair};
+use crate::persistent_homology::persistent_homology_rips;
 use crate::persistence_diagram::PersistenceDiagram;
-use crate::simplicial_complex::{Simplex, SimplicialComplex, vietoris_rips_complex};
+use crate::simplicial_complex::SimplicialComplex;
 use nalgebra::DMatrix;
 use std::collections::{HashMap, HashSet};
 

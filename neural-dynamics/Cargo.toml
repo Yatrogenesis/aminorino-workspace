@@ -1,0 +1,41 @@
+[package]
+name = "neural-dynamics"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Large-scale neural network simulation library with advanced connectivity patterns and dynamics"
+keywords = ["neuroscience", "neural-network", "simulation", "dynamics", "computational"]
+categories = ["science", "simulation"]
+
+[dependencies]
+# Workspace crates
+hodgkin-huxley = { path = "../hodgkin-huxley" }
+synapse-models = { path = "../synapse-models" }
+
+# Math and linear algebra
+nalgebra = { workspace = true }
+ndarray = { workspace = true }
+num-complex = { workspace = true }
+statrs = { workspace = true }
+
+# Parallelization
+rayon = { workspace = true }
+crossbeam = { workspace = true }
+
+# Graphs
+petgraph = { workspace = true }
+
+# Utilities
+thiserror = { workspace = true }
+anyhow = { workspace = true }
+rand = { workspace = true }
+rand_distr = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+[dev-dependencies]
+approx = { workspace = true }
+criterion = { workspace = true }
+proptest = { workspace = true }

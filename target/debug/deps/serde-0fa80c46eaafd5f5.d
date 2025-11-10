@@ -1,0 +1,14 @@
+/Users/yatrogenesis/aminorino-workspace/target/debug/deps/serde-0fa80c46eaafd5f5.d: /Users/yatrogenesis/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/lib.rs /Users/yatrogenesis/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/integer128.rs /Users/yatrogenesis/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/mod.rs /Users/yatrogenesis/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/de.rs /Users/yatrogenesis/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/ser.rs /Users/yatrogenesis/aminorino-workspace/target/debug/build/serde-18cbe8bc7bb9b138/out/private.rs
+
+/Users/yatrogenesis/aminorino-workspace/target/debug/deps/libserde-0fa80c46eaafd5f5.rlib: /Users/yatrogenesis/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/lib.rs /Users/yatrogenesis/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/integer128.rs /Users/yatrogenesis/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/mod.rs /Users/yatrogenesis/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/de.rs /Users/yatrogenesis/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/ser.rs /Users/yatrogenesis/aminorino-workspace/target/debug/build/serde-18cbe8bc7bb9b138/out/private.rs
+
+/Users/yatrogenesis/aminorino-workspace/target/debug/deps/libserde-0fa80c46eaafd5f5.rmeta: /Users/yatrogenesis/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/lib.rs /Users/yatrogenesis/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/integer128.rs /Users/yatrogenesis/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/mod.rs /Users/yatrogenesis/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/de.rs /Users/yatrogenesis/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/ser.rs /Users/yatrogenesis/aminorino-workspace/target/debug/build/serde-18cbe8bc7bb9b138/out/private.rs
+
+/Users/yatrogenesis/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/lib.rs:
+/Users/yatrogenesis/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/integer128.rs:
+/Users/yatrogenesis/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/mod.rs:
+/Users/yatrogenesis/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/de.rs:
+/Users/yatrogenesis/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/ser.rs:
+/Users/yatrogenesis/aminorino-workspace/target/debug/build/serde-18cbe8bc7bb9b138/out/private.rs:
+
+# env-dep:OUT_DIR=/Users/yatrogenesis/aminorino-workspace/target/debug/build/serde-18cbe8bc7bb9b138/out

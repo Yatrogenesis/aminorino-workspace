@@ -1,0 +1,66 @@
+[workspace]
+resolver = "2"
+members = [
+    "hodgkin-huxley",
+    "iit",
+    "tda",
+    "synapse-models",
+    "neural-dynamics",
+    "aminorino"
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["Francisco Molina Burgos <pako.molina@gmail.com>", "Claude-AMINORINO <claude-aminorino@anthropic.com>"]
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/aminorino"
+
+[workspace.dependencies]
+# Matemática y Álgebra Lineal
+nalgebra = "0.33"
+ndarray = { version = "0.16", features = ["rayon"] }
+num-complex = "0.4"
+statrs = "0.17"
+
+# Ecuaciones Diferenciales
+ode_solvers = "0.4"
+
+# Computación Científica
+rustfft = "6.2"
+special = "0.11"
+
+# Paralelización
+rayon = "1.10"
+crossbeam = "0.8"
+
+# Optimización
+argmin = "0.10"
+
+# Serialización
+serde = { version = "1.0", features = ["derive"] }
+bincode = "1.3"
+serde_json = "1.0"
+
+# Grafos
+petgraph = "0.6"
+
+# Utilidades
+thiserror = "1.0"
+anyhow = "1.0"
+rand = "0.8"
+rand_distr = "0.4"
+
+# Testing
+approx = "0.5"
+criterion = "0.5"
+proptest = "1.5"
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+strip = true
+
+[profile.bench]
+inherits = "release"

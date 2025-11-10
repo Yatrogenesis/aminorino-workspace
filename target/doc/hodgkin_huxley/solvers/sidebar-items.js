@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"struct":["AdaptiveIntegrator","ExponentialEulerIntegrator","RK4Integrator"],"type":["ODEFunction"]};

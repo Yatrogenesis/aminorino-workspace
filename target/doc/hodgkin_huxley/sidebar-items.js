@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"mod":["channels","constants","error","neuron_types","solvers"],"struct":["HodgkinHuxleyNeuron"]};

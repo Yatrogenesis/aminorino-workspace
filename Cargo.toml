@@ -14,7 +14,7 @@ version = "0.1.0"
 edition = "2021"
 authors = ["Francisco Molina Burgos <pako.molina@gmail.com>", "Claude-AMINORINO <claude-aminorino@anthropic.com>"]
 license = "MIT OR Apache-2.0"
-repository = "https://github.com/aminorino"
+repository = "https://github.com/Yatrogenesis/aminorino-workspace"
 
 [workspace.dependencies]
 # Matemática y Álgebra Lineal

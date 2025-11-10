@@ -212,10 +212,10 @@ Contributions are welcome! Please:
 If you use AMINORINO in your research, please cite:
 
 ```bibtex
-@software{aminorino2024,
+@software{aminorino2025,
   title = {AMINORINO: Advanced Mind Integration Framework},
   author = {Molina Burgos, Francisco and Claude-AMINORINO},
-  year = {2024},
+  year = {2025},
   url = {https://github.com/aminorino/aminorino}
 }
 ```

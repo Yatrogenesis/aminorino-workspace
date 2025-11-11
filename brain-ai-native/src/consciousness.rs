@@ -26,6 +26,7 @@ use crate::{BrainError, BrainResult};
 use crate::core::AIBrain;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
+use rand::Rng;
 
 /// Consciousness measurement result
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -90,34 +91,79 @@ impl Partition {
 }
 
 /// Measure Φ for quantum system (AIBrain)
+///
+/// CORRECTED VERSION: Uses Fock-state marginalization + sampling for large systems
 pub fn measure_phi_quantum(brain: &AIBrain) -> BrainResult<ConsciousnessMeasurement> {
-    let num_elements = brain.config.num_oscillators;
+    let num_oscillators = brain.config.num_oscillators;
+    let max_fock = brain.config.max_fock;
+    let fock_levels = max_fock + 1;  // Number of Fock states per oscillator
     let state_space_size = brain.config.effective_neurons();
 
     // Get current state as probability distribution
     let state_vector = brain.get_state_vector();
     let prob_dist = state_to_probability_distribution(&state_vector);
 
-    // Generate all non-trivial bipartitions
-    let partitions = generate_bipartitions(num_elements);
+    // CRITICAL: We partition OSCILLATORS (not individual Fock states)
+    // Each oscillator can be in (max_fock+1) states
+    let num_elements = num_oscillators;
+
+    // Determine if we need sampling (for large systems)
+    let total_bipartitions = 2_usize.pow(num_elements as u32 - 1) - 1;
+    let use_sampling = total_bipartitions > 1000;  // Sample if > 1000 partitions
+    let num_samples = if use_sampling { 1000 } else { total_bipartitions };
 
     let mut min_information_loss = f64::INFINITY;
     let mut mip = None;
+    let mut partitions_tested = 0;
 
-    // Find Minimum Information Partition
-    for mut partition in partitions {
-        let info_loss = calculate_partition_information_loss(
-            &prob_dist,
-            &partition.subset_a,
-            &partition.subset_b,
-            num_elements,
-        );
+    if use_sampling {
+        // SAMPLED approach for large systems
+        let mut rng = rand::thread_rng();
 
-        partition.information_loss = info_loss;
+        for _ in 0..num_samples {
+            let partition = generate_random_bipartition(num_elements, &mut rng);
+            let info_loss = calculate_partition_information_loss_fock(
+                &prob_dist,
+                &partition.subset_a,
+                &partition.subset_b,
+                num_elements,
+                fock_levels,
+            );
 
-        if info_loss < min_information_loss {
-            min_information_loss = info_loss;
-            mip = Some(partition);
+            partitions_tested += 1;
+
+            if info_loss < min_information_loss {
+                min_information_loss = info_loss;
+                mip = Some(Partition {
+                    subset_a: partition.subset_a,
+                    subset_b: partition.subset_b,
+                    information_loss: info_loss,
+                });
+            }
+        }
+    } else {
+        // EXACT enumeration for small systems
+        let partitions = generate_bipartitions(num_elements);
+
+        for partition in partitions {
+            let info_loss = calculate_partition_information_loss_fock(
+                &prob_dist,
+                &partition.subset_a,
+                &partition.subset_b,
+                num_elements,
+                fock_levels,
+            );
+
+            partitions_tested += 1;
+
+            if info_loss < min_information_loss {
+                min_information_loss = info_loss;
+                mip = Some(Partition {
+                    subset_a: partition.subset_a,
+                    subset_b: partition.subset_b,
+                    information_loss: info_loss,
+                });
+            }
         }
     }
 
@@ -132,15 +178,21 @@ pub fn measure_phi_quantum(brain: &AIBrain) -> BrainResult<ConsciousnessMeasurem
     let mut metrics = HashMap::new();
     metrics.insert("entropy".to_string(), calculate_entropy(&prob_dist));
     metrics.insert("effective_neurons".to_string(), state_space_size as f64);
-    metrics.insert("num_oscillators".to_string(), num_elements as f64);
+    metrics.insert("num_oscillators".to_string(), num_oscillators as f64);
+    metrics.insert("fock_levels".to_string(), fock_levels as f64);
+    metrics.insert("sampled".to_string(), if use_sampling { 1.0 } else { 0.0 });
 
     Ok(ConsciousnessMeasurement {
         phi,
         num_elements,
         state_space_size,
         mip,
-        num_partitions: 2_usize.pow(num_elements as u32 - 1) - 1,  // 2^(n-1) - 1 non-trivial
-        method: "IIT_Quantum_Reservoir".to_string(),
+        num_partitions: partitions_tested,
+        method: if use_sampling {
+            "IIT_Quantum_Sampled".to_string()
+        } else {
+            "IIT_Quantum_Exact".to_string()
+        },
         metrics,
     })
 }
@@ -276,7 +328,111 @@ fn calculate_partition_information_loss(
     mutual_info.max(0.0)  // Ensure non-negative
 }
 
-/// Marginalize probability distribution to subset
+/// Generate random bipartition (for sampling)
+fn generate_random_bipartition<R: Rng>(n: usize, rng: &mut R) -> Partition {
+    let mut subset_a = Vec::new();
+    let mut subset_b = Vec::new();
+
+    for i in 0..n {
+        if rng.gen::<bool>() {
+            subset_a.push(i);
+        } else {
+            subset_b.push(i);
+        }
+    }
+
+    // Ensure neither subset is empty
+    if subset_a.is_empty() {
+        let elem = subset_b.pop().unwrap();
+        subset_a.push(elem);
+    } else if subset_b.is_empty() {
+        let elem = subset_a.pop().unwrap();
+        subset_b.push(elem);
+    }
+
+    Partition::new(subset_a, subset_b)
+}
+
+/// Calculate information loss for a partition (Fock-state aware version)
+fn calculate_partition_information_loss_fock(
+    prob_dist: &[f64],
+    subset_a: &[usize],
+    subset_b: &[usize],
+    num_elements: usize,
+    fock_levels: usize,
+) -> f64 {
+    // Whole system entropy
+    let h_whole = calculate_entropy(prob_dist);
+
+    // Marginal distributions for subsets (using Fock-aware marginalization)
+    let prob_a = marginalize_distribution_fock(prob_dist, subset_a, num_elements, fock_levels);
+    let prob_b = marginalize_distribution_fock(prob_dist, subset_b, num_elements, fock_levels);
+
+    let h_a = calculate_entropy(&prob_a);
+    let h_b = calculate_entropy(&prob_b);
+
+    // Mutual information I(A;B) = H(A) + H(B) - H(A,B)
+    let mutual_info = h_a + h_b - h_whole;
+
+    mutual_info.max(0.0)  // Ensure non-negative
+}
+
+/// Marginalize probability distribution to subset (FOCK-STATE AWARE)
+///
+/// This is the CRITICAL FIX for the bug.
+///
+/// Instead of binary bit indexing, we decode state indices as base-fock_levels numbers.
+///
+/// For example, with 4 oscillators and max_fock=2 (3 levels: {0,1,2}):
+/// - State index 42 represents a specific combination like |1⟩|2⟩|0⟩|1⟩
+/// - We decode: 42 in base-3 = 1120₃
+/// - To marginalize to subset [0,2], we extract Fock numbers for oscillators 0 and 2
+fn marginalize_distribution_fock(
+    prob_dist: &[f64],
+    subset: &[usize],
+    num_elements: usize,
+    fock_levels: usize,
+) -> Vec<f64> {
+    let subset_size = fock_levels.pow(subset.len() as u32);
+    let mut marginal = vec![0.0; subset_size];
+
+    // Sum over all states, grouping by subset configuration
+    for (state_idx, &prob) in prob_dist.iter().enumerate() {
+        // Decode state_idx as a base-fock_levels number
+        let fock_config = decode_fock_state(state_idx, num_elements, fock_levels);
+
+        // Extract subset configuration
+        let mut subset_state_idx = 0;
+        for (pos, &elem_idx) in subset.iter().enumerate() {
+            let fock_num = fock_config[elem_idx];
+            subset_state_idx += fock_num * fock_levels.pow(pos as u32);
+        }
+
+        if subset_state_idx < marginal.len() {
+            marginal[subset_state_idx] += prob;
+        }
+    }
+
+    marginal
+}
+
+/// Decode state index into Fock configuration
+///
+/// Example: state_idx=42, num_elements=4, fock_levels=3
+/// 42 in base-3 = 1120₃ → [0, 2, 1, 1] (reversed to match tensor product order)
+fn decode_fock_state(state_idx: usize, num_elements: usize, fock_levels: usize) -> Vec<usize> {
+    let mut config = vec![0; num_elements];
+    let mut idx = state_idx;
+
+    for i in 0..num_elements {
+        config[i] = idx % fock_levels;
+        idx /= fock_levels;
+    }
+
+    config
+}
+
+/// Marginalize probability distribution to subset (BINARY - kept for classical compatibility)
 fn marginalize_distribution(
     prob_dist: &[f64],
     subset: &[usize],

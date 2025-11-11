@@ -151,36 +151,16 @@ impl AIBrain {
     pub fn new(config: BrainConfig) -> BrainResult<Self> {
         config.validate()?;
 
-        // Create oscillators with configured frequencies
-        let mut oscillators = Vec::new();
-        for (id, &freq) in config.frequencies.iter().enumerate() {
-            // Initialize in ground state |0⟩
-            oscillators.push(QuantumOscillator::new(
-                id,
-                freq,
-                config.max_fock,
-                config.damping_rate,
-            ));
-        }
+        // Use the QuantumReservoir constructor (it initializes quantum state automatically)
+        let mut reservoir = QuantumReservoir::new(
+            config.num_oscillators,
+            config.frequencies[0],  // Use first frequency (could be generalized)
+            config.max_fock,
+            config.damping_rate,
+        );
 
-        // Create all-to-all couplings
-        let mut couplings = Vec::new();
-        for i in 0..config.num_oscillators {
-            for j in (i + 1)..config.num_oscillators {
-                couplings.push(OscillatorCoupling {
-                    osc1: i,
-                    osc2: j,
-                    coupling_strength: config.coupling_strength,
-                });
-            }
-        }
-
-        let reservoir = QuantumReservoir {
-            oscillators,
-            couplings,
-            readout_weights: vec![0.0; config.effective_neurons()],
-            effective_neurons: config.effective_neurons(),
-        };
+        // Add all-to-all couplings
+        reservoir.add_all_to_all_coupling(config.coupling_strength);
 
         // Create error correction if enabled
         let error_correction = if config.error_correction {
@@ -321,19 +301,21 @@ impl AIBrain {
     }
 
     /// Get current state as feature vector for IIT analysis
+    ///
+    /// NOW USES REAL QUANTUM STATE WITH ENTANGLEMENT!
+    ///
+    /// Returns probability amplitudes |cᵢ|² from the full quantum state
     pub fn get_state_vector(&self) -> Vec<f64> {
-        // Flatten all oscillator Fock amplitudes into single vector
-        let mut vec = Vec::new();
-        for osc_amps in &self.state {
-            for amp in osc_amps {
-                vec.push(amp.norm());  // Use amplitude magnitude
-                vec.push(amp.arg());   // And phase
-            }
-        }
-        vec
+        // Use the REAL quantum state from reservoir (with entanglement!)
+        let quantum_state = self.reservoir.get_quantum_state();
+
+        // Return probability amplitudes (squared magnitudes)
+        quantum_state.iter().map(|c| c.norm_sqr()).collect()
     }
 
     /// Set brain state from external input
+    ///
+    /// NOW USES REAL QUANTUM STATE INITIALIZATION!
     pub fn set_input(&mut self, input: &[f64]) -> BrainResult<()> {
         if input.len() != self.config.num_oscillators {
             return Err(BrainError::InvalidConfig(
@@ -342,19 +324,10 @@ impl AIBrain {
             ));
         }
 
-        // Map input values to coherent state amplitudes
-        for (i, &val) in input.iter().enumerate() {
-            let alpha = Complex64::new(val, 0.0);
-            self.reservoir.oscillators[i] = QuantumOscillator::coherent_state(
-                i,
-                self.config.frequencies[i],
-                self.config.max_fock,
-                alpha,
-                self.config.damping_rate,
-            );
-        }
+        // Use the new quantum state initialization
+        self.reservoir.set_quantum_state_from_input(input);
 
-        // Update state
+        // Update backward-compatible state
         self.state = self.reservoir.oscillators
             .iter()
             .map(|osc| osc.fock_amplitudes.clone())

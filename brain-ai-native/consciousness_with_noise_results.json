@@ -1,0 +1,44 @@
+{
+  "conclusion": "confirmed",
+  "experiment": "PhiQ_with_Noise_and_Activity",
+  "hypothesis": "Φ increases with noise amplitude",
+  "phi_increase": 4.541180443906612e-6,
+  "phi_ratio": null,
+  "results": [
+    {
+      "amplitude": 0.0,
+      "avg_phi": 0.0,
+      "final_phi": 0.0,
+      "max_phi": 0.0,
+      "noise_level": "No Noise"
+    },
+    {
+      "amplitude": 0.1,
+      "avg_phi": 4.052731224918338e-9,
+      "final_phi": 3.069446849468527e-10,
+      "max_phi": 1.1755012851999425e-8,
+      "noise_level": "Low Noise"
+    },
+    {
+      "amplitude": 0.5,
+      "avg_phi": 1.0113919457488407e-8,
+      "final_phi": 6.216256065449954e-9,
+      "max_phi": 2.3439107987854868e-8,
+      "noise_level": "Medium Noise"
+    },
+    {
+      "amplitude": 1.0,
+      "avg_phi": 1.479351561695097e-7,
+      "final_phi": 2.10037396364271e-8,
+      "max_phi": 1.0663708991387466e-6,
+      "noise_level": "High Noise"
+    },
+    {
+      "amplitude": 2.0,
+      "avg_phi": 4.541180443906612e-6,
+      "final_phi": 1.115203861701275e-6,
+      "max_phi": 0.000035314214423376455,
+      "noise_level": "Very High Noise"
+    }
+  ]
+}

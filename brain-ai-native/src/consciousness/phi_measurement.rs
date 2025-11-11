@@ -684,8 +684,32 @@ pub fn measure_phi_general<B: BrainSubstrate>(brain: &B) -> BrainResult<Consciou
     let num_units = brain.get_num_units();
 
     // Convert continuous state to discrete binary for IIT (as usize)
-    let binary_state: Vec<usize> = state_vector.iter()
-        .map(|&x| if x > 0.0 { 1 } else { 0 })
+    // Take only first num_units elements (in case state_vector is larger)
+    let mut values: Vec<f64> = state_vector.iter()
+        .take(num_units)
+        .copied()
+        .collect();
+
+    // Ensure we have exactly num_units elements
+    if values.len() != num_units {
+        return Err(BrainError::ConsciousnessError(format!(
+            "State vector length {} doesn't match num_units {}",
+            values.len(), num_units
+        )));
+    }
+
+    // Use MEDIAN as threshold for binary mapping
+    // This ensures balanced 0/1 distribution regardless of absolute values
+    let mut sorted_values = values.clone();
+    sorted_values.sort_by(|a, b| a.partial_cmp(b).unwrap_or(std::cmp::Ordering::Equal));
+    let median = if sorted_values.len() % 2 == 0 {
+        (sorted_values[sorted_values.len()/2 - 1] + sorted_values[sorted_values.len()/2]) / 2.0
+    } else {
+        sorted_values[sorted_values.len()/2]
+    };
+
+    let binary_state: Vec<usize> = values.iter()
+        .map(|&x| if x > median { 1 } else { 0 })
         .collect();
 
     // Create IIT system

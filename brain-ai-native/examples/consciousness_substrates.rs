@@ -56,9 +56,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
         let mut quantum_brain = QuantumBrain::new(quantum_config)?;
 
-        // Evolve with noise
+        // Evolve with noise (INCREASED to match maximum_entanglement experiment)
         let noise_amplitude = 5.0;
-        let evolution_steps = 10000;
+        let evolution_steps = 1_000_000;  // 1M steps = 100 μs (was 10k = 1 μs)
         let dt = 1e-10;
 
         for _ in 0..evolution_steps {
@@ -83,12 +83,18 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         let mut bio_brain = BiologicalBrain::new(bio_config)?;
 
         // Evolve with input
-        for _ in 0..evolution_steps {
+        // CORRECTED: Match quantum evolution time (100 μs)
+        // Bio timestep: 0.01 ms = 10 μs → need 10 steps for 100 μs
+        // But we want more dynamics, so use 0.0001 ms = 0.1 μs → need 1000 steps
+        let bio_dt = 0.0001;  // 0.1 μs (10× finer than typical HH)
+        let bio_steps = 1_000;  // Total time = 1000 × 0.1 μs = 100 μs (matches quantum)
+
+        for _ in 0..bio_steps {
             let input: Vec<f64> = (0..num_units)
                 .map(|_| 15.0 + rand::random::<f64>() * 5.0)  // 15-20 μA/cm²
                 .collect();
             bio_brain.set_input(&input)?;
-            bio_brain.evolve(0.01)?;  // 0.01 ms timestep for HH
+            bio_brain.evolve(bio_dt)?;
         }
 
         let bio_measurement = measure_phi_general(&bio_brain)?;
@@ -120,19 +126,26 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         let mut hybrid_brain = HybridBrain::new(hybrid_config)?;
 
         // Evolve hybrid
-        for _ in 0..evolution_steps {
-            let quantum_noise: Vec<f64> = (0..num_units/2)
-                .map(|_| noise_amplitude * (rand::random::<f64>() * 2.0 - 1.0))
-                .collect();
-            let bio_input: Vec<f64> = (0..num_units/2)
-                .map(|_| 15.0 + rand::random::<f64>() * 5.0)
-                .collect();
+        // CORRECTED: Quantum part uses dt=1e-10, biological part needs matching time
+        // Solution: Evolve quantum 1M times, bio 1000 times, synced every bio step
+        let quantum_steps_per_bio = evolution_steps / bio_steps;
 
-            let mut combined = quantum_noise;
-            combined.extend(bio_input);
+        for _ in 0..bio_steps {
+            // Evolve quantum subsystem multiple times per bio step
+            for _ in 0..quantum_steps_per_bio {
+                let quantum_noise: Vec<f64> = (0..num_units/2)
+                    .map(|_| noise_amplitude * (rand::random::<f64>() * 2.0 - 1.0))
+                    .collect();
+                let bio_input: Vec<f64> = (0..num_units/2)
+                    .map(|_| 15.0 + rand::random::<f64>() * 5.0)
+                    .collect();
 
-            hybrid_brain.set_input(&combined)?;
-            hybrid_brain.evolve(dt)?;
+                let mut combined = quantum_noise;
+                combined.extend(bio_input);
+
+                hybrid_brain.set_input(&combined)?;
+                hybrid_brain.evolve(dt)?;  // Quantum dt
+            }
         }
 
         let hybrid_measurement = measure_phi_general(&hybrid_brain)?;

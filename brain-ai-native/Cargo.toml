@@ -5,8 +5,8 @@ edition.workspace = true
 authors.workspace = true
 license.workspace = true
 repository.workspace = true
-description = "AI-Native Brain architecture using quantum processor substrate for consciousness modeling"
-keywords = ["quantum", "consciousness", "iit", "brain", "ai"]
+description = "AI-Native Brain (CORTEXIA Framework): Quantum consciousness research with IIT, cross-substrate comparison, and statistical validation"
+keywords = ["quantum", "consciousness", "iit", "cortexia", "aminorino"]
 categories = ["science", "simulation"]
 
 [dependencies]

@@ -16,8 +16,8 @@
 //! Expected runtime: ~17 minutes on Apple M1
 
 use brain_ai_native::prelude::*;
-use rand::seq::SliceRandom;
-use rand::thread_rng;
+use brain_ai_native::BrainResult;
+use rand::{Rng, thread_rng};
 use std::fs;
 use std::time::Instant;
 
@@ -30,11 +30,11 @@ fn main() -> BrainResult<()> {
 
     let start_time = Instant::now();
 
-    // Configuration: Best performing condition from screening
+    // Configuration: XLarge + Very High Noise (MAXIMUM Φ from screening)
     let config = BrainConfig {
-        num_oscillators: 4,
-        max_fock: 2,  // 81 effective neurons
-        frequencies: vec![1e9; 4],
+        num_oscillators: 6,      // XLarge: 729 effective neurons
+        max_fock: 2,             // (2+1)^6 = 729
+        frequencies: vec![1e9; 6],
         coupling_strength: 1e9,  // 1 GHz (strong coupling)
         damping_rate: 1e5,       // Increased decoherence
         error_correction: false,
@@ -45,7 +45,7 @@ fn main() -> BrainResult<()> {
     };
 
     let num_replications = 50;
-    let noise_amplitude = 10.0;  // Extreme noise
+    let noise_amplitude = 5.0;   // Very High (optimal for max Φ)
     let total_time = 1e-4;       // 100 microseconds
     let dt = 1e-10;              // 100 picoseconds
     let num_steps = (total_time / dt) as usize;
@@ -68,6 +68,7 @@ fn main() -> BrainResult<()> {
         print!("[Replication {}/{}] ", rep, num_replications);
 
         let mut brain = AIBrain::new(config.clone())?;
+        let mut rng = thread_rng();
 
         // Random initial state (different for each replication)
         let input: Vec<f64> = (0..config.num_oscillators)
@@ -75,22 +76,30 @@ fn main() -> BrainResult<()> {
             .collect();
         brain.set_input(&input)?;
 
-        // Evolution with noise
-        let samples = 9;  // Multiple measurements per replication
-        let step_size = num_steps / samples;
+        // Evolution with CONTINUOUS noise injection (every step)
+        // This matches maximum_entanglement methodology to maintain quantum entanglement
+        let samples = 9;  // Measurement intervals
+        let measurement_interval = num_steps / samples;
         let mut phi_samples: Vec<f64> = Vec::new();
 
-        for i in 0..samples {
-            // Evolve
-            brain.evolve(step_size as f64 * dt)?;
+        for step in 0..num_steps {
+            // Inject noise at EVERY step (critical for quantum entanglement)
+            if noise_amplitude > 0.0 {
+                let noise_input: Vec<f64> = (0..config.num_oscillators)
+                    .map(|_| noise_amplitude * (rng.gen::<f64>() * 2.0 - 1.0))
+                    .collect();
+                brain.set_input(&noise_input)?;
+            }
 
-            // Add noise
-            brain.add_noise(noise_amplitude);
+            // Evolve one step
+            brain.evolve(dt)?;
 
-            // Measure Φ
-            let measurement = measure_phi_quantum(&brain)?;
-            phi_samples.push(measurement.phi);
-            all_phi_values.push(measurement.phi);
+            // Measure Φ periodically
+            if step % measurement_interval == 0 && step > 0 {
+                let measurement = measure_phi_quantum(&brain)?;
+                phi_samples.push(measurement.phi);
+                all_phi_values.push(measurement.phi);
+            }
         }
 
         // Statistics for this replication
@@ -461,11 +470,12 @@ fn main() -> BrainResult<()> {
     });
 
     let output_file = "consciousness_validation_n50_results.json";
-    fs::write(output_file, serde_json::to_string_pretty(&results).unwrap())?;
+    fs::write(output_file, serde_json::to_string_pretty(&results).unwrap())
+        .expect("Failed to write results to file");
 
     println!("\n✅ Results saved to: {}", output_file);
     println!("\n📊 KEY FINDINGS:");
-    println!("  • Mean Φ = {:.6} ± {:.6} bits (95% CI)", mean, ci_upper - mean);
+    println!("  • Mean Φ = {:.6} ± {:.6} bits (95% CI)", mean, bootstrap_ci_upper - mean);
     println!("  • Maximum Φ = {:.6} bits (P99 = {:.6})", max, p99);
     println!("  • Coefficient of Variation = {:.1}%", cv);
     println!();

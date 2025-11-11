@@ -47,12 +47,14 @@
 pub mod core;
 pub mod consciousness;
 pub mod experiments;
+pub mod brain;
 
 /// Re-export commonly used types
 pub mod prelude {
     pub use crate::core::*;
     pub use crate::consciousness::*;
     pub use crate::experiments::*;
+    pub use crate::brain::*;
 }
 
 use thiserror::Error;

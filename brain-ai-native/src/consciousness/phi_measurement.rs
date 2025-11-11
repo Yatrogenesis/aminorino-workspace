@@ -24,9 +24,11 @@
 
 use crate::{BrainError, BrainResult};
 use crate::core::AIBrain;
+use crate::brain::BrainSubstrate;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use rand::Rng;
+use iit::{IITSystem, PhiResult};
 
 /// Consciousness measurement result
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -674,4 +676,54 @@ mod tests {
         assert_relative_eq!(marginal[0], 0.1 + 0.3, epsilon = 1e-6);  // bit 0 = 0
         assert_relative_eq!(marginal[1], 0.2 + 0.4, epsilon = 1e-6);  // bit 0 = 1
     }
+}
+
+/// Measure Φ from any BrainSubstrate implementation
+pub fn measure_phi_general<B: BrainSubstrate>(brain: &B) -> BrainResult<ConsciousnessMeasurement> {
+    let state_vector = brain.get_state_vector();
+    let num_units = brain.get_num_units();
+
+    // Convert continuous state to discrete binary for IIT (as usize)
+    let binary_state: Vec<usize> = state_vector.iter()
+        .map(|&x| if x > 0.0 { 1 } else { 0 })
+        .collect();
+
+    // Create IIT system
+    let mut iit_system = IITSystem::new(num_units);
+
+    // Set up fully connected network
+    for i in 0..num_units {
+        for j in 0..num_units {
+            if i != j {
+                iit_system.set_connection(i, j, true)
+                    .map_err(|e| BrainError::ConsciousnessError(format!("IIT connection error: {}", e)))?;
+            }
+        }
+    }
+
+    iit_system.set_state(binary_state)
+        .map_err(|e| BrainError::ConsciousnessError(format!("IIT state error: {}", e)))?;
+
+    // Calculate Φ
+    let phi_result = iit_system.calculate_phi()
+        .map_err(|e| BrainError::ConsciousnessError(format!("IIT phi calculation error: {}", e)))?;
+
+    // Calculate state space size (2^n for binary states)
+    let state_space_size = 2_usize.pow(num_units as u32);
+
+    Ok(ConsciousnessMeasurement {
+        phi: phi_result.phi,
+        num_elements: num_units,
+        state_space_size,
+        num_partitions: phi_result.n_partitions,
+        mip: phi_result.mip.as_ref().map(|mip_info| {
+            Partition {
+                subset_a: mip_info.partition.part1.clone(),
+                subset_b: mip_info.partition.part2.clone(),
+                information_loss: phi_result.phi,
+            }
+        }),
+        method: format!("IIT-{}", brain.substrate_type()),
+        metrics: std::collections::HashMap::new(),
+    })
 }

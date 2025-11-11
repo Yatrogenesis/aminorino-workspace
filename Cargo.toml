@@ -8,7 +8,7 @@ members = [
     "neural-dynamics",
     "cortexia",
     "quantum-processor"
-]
+, "brain-ai-native"]
 
 [workspace.package]
 version = "0.1.0"

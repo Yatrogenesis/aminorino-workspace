@@ -1,11 +1,16 @@
-# Rust build artifacts
+# CORTEXIA Framework - Development Files
+# Implementation code will be added upon public release
+
+# Rust
 /target/
 **/*.rs.bk
+Cargo.lock
 *.pdb
 
-# Cargo.lock should be tracked for binaries, ignored for libraries
-# Since this is a library workspace, we track it
-# Cargo.lock
+# Development
+.env
+.env.local
+config/local/
 
 # IDE
 .vscode/
@@ -18,8 +23,16 @@
 .DS_Store
 Thumbs.db
 
-# Documentation
-/doc/
+# Documentation builds
+docs/_build/
+docs/.doctrees/
 
-# Benchmarks
-/benches/criterion/
+# Testing
+/coverage/
+*.profraw
+*.profdata
+
+# Temporary
+*.tmp
+*.log
+.cache/

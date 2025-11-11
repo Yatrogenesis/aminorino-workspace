@@ -63,7 +63,32 @@ AI-Native Brain is a revolutionary consciousness modeling system that uses quant
 - **Scaling Studies**: Test how Φ scales with system size
 - **JSON Export**: Full experiment results for analysis
 
-## Example Usage
+## Quick Start
+
+### CLI Tool (Recommended)
+
+```bash
+# Install (one command)
+./install.sh
+
+# Validate installation
+cortexia validate
+
+# Run quick measurement
+cortexia measure -n 4 --input "0.5,0.6,0.7,0.8"
+# Output: Φ = 0.000325... bits
+
+# Run standard experiment (5 trials)
+cortexia experiment --trials 5 --output results.json
+
+# Run maximum entanglement experiment
+cortexia maximum --size 4 --fock 2 --time 1e-4 --coupling 1e9
+
+# System information
+cortexia info
+```
+
+### Rust API
 
 ```rust
 use brain_ai_native::prelude::*;

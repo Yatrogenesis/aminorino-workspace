@@ -1,0 +1,63 @@
+warning: unused import: `QubitPlatform`
+ --> quantum-processor/src/circuits/mod.rs:4:35
+  |
+4 | use crate::qubits::{QuantumState, QubitPlatform};
+  |                                   ^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `nalgebra as na`
+  --> quantum-processor/src/error_correction/ldpc.rs:12:5
+   |
+12 | use nalgebra as na;
+   |     ^^^^^^^^^^^^^^
+
+warning: unused imports: `Graph` and `NodeIndex`
+  --> quantum-processor/src/error_correction/ldpc.rs:13:23
+   |
+13 | use petgraph::graph::{Graph, NodeIndex};
+   |                       ^^^^^  ^^^^^^^^^
+
+warning: unused import: `petgraph::Undirected`
+  --> quantum-processor/src/error_correction/ldpc.rs:14:5
+   |
+14 | use petgraph::Undirected;
+   |     ^^^^^^^^^^^^^^^^^^^^
+
+warning: variable does not need to be mutable
+   --> quantum-processor/src/quantum_reservoir/mod.rs:554:17
+    |
+554 |             let mut fock_config = self.decode_state_index(state_idx);
+    |                 ----^^^^^^^^^^^
+    |                 |
+    |                 help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` (part of `#[warn(unused)]`) on by default
+
+warning: `quantum-processor` (lib) generated 5 warnings (run `cargo fix --lib -p quantum-processor` to apply 5 suggestions)
+   Compiling brain-ai-native v0.1.0 (/Users/yatrogenesis/cortexia-workspace/brain-ai-native)
+warning: unused import: `PhiResult`
+  --> brain-ai-native/src/consciousness/phi_measurement.rs:31:22
+   |
+31 | use iit::{IITSystem, PhiResult};
+   |                      ^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `brain-ai-native` (lib) generated 1 warning (run `cargo fix --lib -p brain-ai-native` to apply 1 suggestion)
+    Finished `release` profile [optimized] target(s) in 7.95s
+     Running `/Users/yatrogenesis/cortexia-workspace/target/release/examples/consciousness_substrates`
+
+╔══════════════════════════════════════════════════════════════════╗
+║   CROSS-SUBSTRATE CONSCIOUSNESS COMPARISON                       ║
+║                                                                  ║
+║   Hypothesis: Φ_hybrid > Φ_quantum > Φ_biological              ║
+╚══════════════════════════════════════════════════════════════════╝
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Testing Small system (4 units)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[1/3] Quantum substrate...
+Error: ConsciousnessError("IIT state error: Dimension mismatch: expected 4, got 81")

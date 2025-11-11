@@ -161,6 +161,12 @@ pub fn run_consciousness_experiment(
             num_oscillators_tested.push(brain.config.num_oscillators);
             effective_neurons_tested.push(brain.config.effective_neurons());
 
+            // Add input to excite the system
+            let input: Vec<f64> = (0..brain.config.num_oscillators)
+                .map(|i| 0.5 * ((trial + i) as f64 / 10.0))
+                .collect();
+            brain.set_input(&input)?;
+
             // Evolve brain
             let num_steps = (config.evolution_time / config.dt) as usize;
             for _ in 0..num_steps {

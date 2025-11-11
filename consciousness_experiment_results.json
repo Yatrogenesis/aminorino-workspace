@@ -1,0 +1,877 @@
+{
+  "config": {
+    "num_trials": 5,
+    "evolution_time": 1e-9,
+    "dt": 1e-10,
+    "brain_configs": [
+      {
+        "num_oscillators": 2,
+        "max_fock": 1,
+        "frequencies": [
+          1000000000.0,
+          1000000000.0
+        ],
+        "coupling_strength": 1000000.0,
+        "damping_rate": 1000.0,
+        "error_correction": false,
+        "ldpc_distance": 0,
+        "radiation_protection": false,
+        "chip_area_cm2": 0.0,
+        "altitude_m": 0.0
+      },
+      {
+        "num_oscillators": 3,
+        "max_fock": 1,
+        "frequencies": [
+          1000000000.0,
+          1000000000.0,
+          1000000000.0
+        ],
+        "coupling_strength": 1000000.0,
+        "damping_rate": 1000.0,
+        "error_correction": false,
+        "ldpc_distance": 0,
+        "radiation_protection": false,
+        "chip_area_cm2": 0.0,
+        "altitude_m": 0.0
+      },
+      {
+        "num_oscillators": 4,
+        "max_fock": 1,
+        "frequencies": [
+          1000000000.0,
+          1000000000.0,
+          1000000000.0,
+          1000000000.0
+        ],
+        "coupling_strength": 1000000.0,
+        "damping_rate": 1000.0,
+        "error_correction": false,
+        "ldpc_distance": 0,
+        "radiation_protection": false,
+        "chip_area_cm2": 0.0,
+        "altitude_m": 0.0
+      }
+    ],
+    "classical_sizes": [
+      2,
+      3,
+      4
+    ]
+  },
+  "comparisons": [
+    {
+      "phi_quantum": 0.0,
+      "phi_classical": 0.0,
+      "phi_ratio": 1.0,
+      "hypothesis_confirmed": false,
+      "p_value": null,
+      "quantum_measurement": {
+        "phi": 0.0,
+        "num_elements": 2,
+        "state_space_size": 4,
+        "mip": {
+          "subset_a": [
+            0
+          ],
+          "subset_b": [
+            1
+          ],
+          "information_loss": 0.0
+        },
+        "num_partitions": 1,
+        "method": "IIT_Quantum_Reservoir",
+        "metrics": {
+          "effective_neurons": 4.0,
+          "num_oscillators": 2.0,
+          "entropy": 2.3941178054062195
+        }
+      },
+      "classical_measurement": {
+        "phi": 0.0,
+        "num_elements": 2,
+        "state_space_size": 8,
+        "mip": {
+          "subset_a": [
+            0
+          ],
+          "subset_b": [
+            1
+          ],
+          "information_loss": 0.0
+        },
+        "num_partitions": 1,
+        "method": "IIT_Classical",
+        "metrics": {
+          "entropy": 2.3941178054062195,
+          "state_space_size": 8.0,
+          "num_elements": 2.0
+        }
+      }
+    },
+    {
+      "phi_quantum": 0.0,
+      "phi_classical": 0.0,
+      "phi_ratio": 1.0,
+      "hypothesis_confirmed": false,
+      "p_value": null,
+      "quantum_measurement": {
+        "phi": 0.0,
+        "num_elements": 3,
+        "state_space_size": 8,
+        "mip": {
+          "subset_a": [
+            0
+          ],
+          "subset_b": [
+            1,
+            2
+          ],
+          "information_loss": 0.0
+        },
+        "num_partitions": 3,
+        "method": "IIT_Quantum_Reservoir",
+        "metrics": {
+          "entropy": 3.0442388054714336,
+          "effective_neurons": 8.0,
+          "num_oscillators": 3.0
+        }
+      },
+      "classical_measurement": {
+        "phi": 0.0,
+        "num_elements": 3,
+        "state_space_size": 12,
+        "mip": {
+          "subset_a": [
+            0
+          ],
+          "subset_b": [
+            1,
+            2
+          ],
+          "information_loss": 0.0
+        },
+        "num_partitions": 3,
+        "method": "IIT_Classical",
+        "metrics": {
+          "num_elements": 3.0,
+          "state_space_size": 12.0,
+          "entropy": 3.0442388054714336
+        }
+      }
+    },
+    {
+      "phi_quantum": 0.014924365957676322,
+      "phi_classical": 0.014924365957676322,
+      "phi_ratio": 1.0,
+      "hypothesis_confirmed": false,
+      "p_value": null,
+      "quantum_measurement": {
+        "phi": 0.014924365957676322,
+        "num_elements": 4,
+        "state_space_size": 16,
+        "mip": {
+          "subset_a": [
+            2
+          ],
+          "subset_b": [
+            0,
+            1,
+            3
+          ],
+          "information_loss": 0.014924365957676322
+        },
+        "num_partitions": 7,
+        "method": "IIT_Quantum_Reservoir",
+        "metrics": {
+          "entropy": 3.5069034384004425,
+          "effective_neurons": 16.0,
+          "num_oscillators": 4.0
+        }
+      },
+      "classical_measurement": {
+        "phi": 0.014924365957676322,
+        "num_elements": 4,
+        "state_space_size": 16,
+        "mip": {
+          "subset_a": [
+            2
+          ],
+          "subset_b": [
+            0,
+            1,
+            3
+          ],
+          "information_loss": 0.014924365957676322
+        },
+        "num_partitions": 7,
+        "method": "IIT_Classical",
+        "metrics": {
+          "num_elements": 4.0,
+          "entropy": 3.5069034384004425,
+          "state_space_size": 16.0
+        }
+      }
+    },
+    {
+      "phi_quantum": 0.0,
+      "phi_classical": 0.0,
+      "phi_ratio": 1.0,
+      "hypothesis_confirmed": false,
+      "p_value": null,
+      "quantum_measurement": {
+        "phi": 0.0,
+        "num_elements": 2,
+        "state_space_size": 4,
+        "mip": {
+          "subset_a": [
+            0
+          ],
+          "subset_b": [
+            1
+          ],
+          "information_loss": 0.0
+        },
+        "num_partitions": 1,
+        "method": "IIT_Quantum_Reservoir",
+        "metrics": {
+          "num_oscillators": 2.0,
+          "entropy": 2.5866303629163223,
+          "effective_neurons": 4.0
+        }
+      },
+      "classical_measurement": {
+        "phi": 0.0,
+        "num_elements": 2,
+        "state_space_size": 8,
+        "mip": {
+          "subset_a": [
+            0
+          ],
+          "subset_b": [
+            1
+          ],
+          "information_loss": 0.0
+        },
+        "num_partitions": 1,
+        "method": "IIT_Classical",
+        "metrics": {
+          "num_elements": 2.0,
+          "state_space_size": 8.0,
+          "entropy": 2.5866303629163223
+        }
+      }
+    },
+    {
+      "phi_quantum": 0.0,
+      "phi_classical": 0.0,
+      "phi_ratio": 1.0,
+      "hypothesis_confirmed": false,
+      "p_value": null,
+      "quantum_measurement": {
+        "phi": 0.0,
+        "num_elements": 3,
+        "state_space_size": 8,
+        "mip": {
+          "subset_a": [
+            0
+          ],
+          "subset_b": [
+            1,
+            2
+          ],
+          "information_loss": 0.0
+        },
+        "num_partitions": 3,
+        "method": "IIT_Quantum_Reservoir",
+        "metrics": {
+          "effective_neurons": 8.0,
+          "entropy": 3.197798136229779,
+          "num_oscillators": 3.0
+        }
+      },
+      "classical_measurement": {
+        "phi": 0.0,
+        "num_elements": 3,
+        "state_space_size": 12,
+        "mip": {
+          "subset_a": [
+            0
+          ],
+          "subset_b": [
+            1,
+            2
+          ],
+          "information_loss": 0.0
+        },
+        "num_partitions": 3,
+        "method": "IIT_Classical",
+        "metrics": {
+          "num_elements": 3.0,
+          "state_space_size": 12.0,
+          "entropy": 3.197798136229779
+        }
+      }
+    },
+    {
+      "phi_quantum": 0.0013233790702744663,
+      "phi_classical": 0.0013233790702744663,
+      "phi_ratio": 1.0,
+      "hypothesis_confirmed": false,
+      "p_value": null,
+      "quantum_measurement": {
+        "phi": 0.0013233790702744663,
+        "num_elements": 4,
+        "state_space_size": 16,
+        "mip": {
+          "subset_a": [
+            2
+          ],
+          "subset_b": [
+            0,
+            1,
+            3
+          ],
+          "information_loss": 0.0013233790702744663
+        },
+        "num_partitions": 7,
+        "method": "IIT_Quantum_Reservoir",
+        "metrics": {
+          "num_oscillators": 4.0,
+          "effective_neurons": 16.0,
+          "entropy": 3.635575442521582
+        }
+      },
+      "classical_measurement": {
+        "phi": 0.0013233790702744663,
+        "num_elements": 4,
+        "state_space_size": 16,
+        "mip": {
+          "subset_a": [
+            2
+          ],
+          "subset_b": [
+            0,
+            1,
+            3
+          ],
+          "information_loss": 0.0013233790702744663
+        },
+        "num_partitions": 7,
+        "method": "IIT_Classical",
+        "metrics": {
+          "num_elements": 4.0,
+          "state_space_size": 16.0,
+          "entropy": 3.635575442521582
+        }
+      }
+    },
+    {
+      "phi_quantum": 0.0,
+      "phi_classical": 0.0,
+      "phi_ratio": 1.0,
+      "hypothesis_confirmed": false,
+      "p_value": null,
+      "quantum_measurement": {
+        "phi": 0.0,
+        "num_elements": 2,
+        "state_space_size": 4,
+        "mip": {
+          "subset_a": [
+            0
+          ],
+          "subset_b": [
+            1
+          ],
+          "information_loss": 0.0
+        },
+        "num_partitions": 1,
+        "method": "IIT_Quantum_Reservoir",
+        "metrics": {
+          "effective_neurons": 4.0,
+          "num_oscillators": 2.0,
+          "entropy": 2.640888644642952
+        }
+      },
+      "classical_measurement": {
+        "phi": 0.0,
+        "num_elements": 2,
+        "state_space_size": 8,
+        "mip": {
+          "subset_a": [
+            0
+          ],
+          "subset_b": [
+            1
+          ],
+          "information_loss": 0.0
+        },
+        "num_partitions": 1,
+        "method": "IIT_Classical",
+        "metrics": {
+          "state_space_size": 8.0,
+          "num_elements": 2.0,
+          "entropy": 2.640888644642952
+        }
+      }
+    },
+    {
+      "phi_quantum": 0.0,
+      "phi_classical": 0.0,
+      "phi_ratio": 1.0,
+      "hypothesis_confirmed": false,
+      "p_value": null,
+      "quantum_measurement": {
+        "phi": 0.0,
+        "num_elements": 3,
+        "state_space_size": 8,
+        "mip": {
+          "subset_a": [
+            0
+          ],
+          "subset_b": [
+            1,
+            2
+          ],
+          "information_loss": 0.0
+        },
+        "num_partitions": 3,
+        "method": "IIT_Quantum_Reservoir",
+        "metrics": {
+          "effective_neurons": 8.0,
+          "num_oscillators": 3.0,
+          "entropy": 3.246584626817625
+        }
+      },
+      "classical_measurement": {
+        "phi": 0.0,
+        "num_elements": 3,
+        "state_space_size": 12,
+        "mip": {
+          "subset_a": [
+            0
+          ],
+          "subset_b": [
+            1,
+            2
+          ],
+          "information_loss": 0.0
+        },
+        "num_partitions": 3,
+        "method": "IIT_Classical",
+        "metrics": {
+          "state_space_size": 12.0,
+          "num_elements": 3.0,
+          "entropy": 3.246584626817625
+        }
+      }
+    },
+    {
+      "phi_quantum": 0.000810628188588236,
+      "phi_classical": 0.000810628188588236,
+      "phi_ratio": 1.0,
+      "hypothesis_confirmed": false,
+      "p_value": null,
+      "quantum_measurement": {
+        "phi": 0.000810628188588236,
+        "num_elements": 4,
+        "state_space_size": 16,
+        "mip": {
+          "subset_a": [
+            2
+          ],
+          "subset_b": [
+            0,
+            1,
+            3
+          ],
+          "information_loss": 0.000810628188588236
+        },
+        "num_partitions": 7,
+        "method": "IIT_Quantum_Reservoir",
+        "metrics": {
+          "effective_neurons": 16.0,
+          "num_oscillators": 4.0,
+          "entropy": 3.679879830436142
+        }
+      },
+      "classical_measurement": {
+        "phi": 0.000810628188588236,
+        "num_elements": 4,
+        "state_space_size": 16,
+        "mip": {
+          "subset_a": [
+            2
+          ],
+          "subset_b": [
+            0,
+            1,
+            3
+          ],
+          "information_loss": 0.000810628188588236
+        },
+        "num_partitions": 7,
+        "method": "IIT_Classical",
+        "metrics": {
+          "num_elements": 4.0,
+          "entropy": 3.679879830436142,
+          "state_space_size": 16.0
+        }
+      }
+    },
+    {
+      "phi_quantum": 0.0,
+      "phi_classical": 0.0,
+      "phi_ratio": 1.0,
+      "hypothesis_confirmed": false,
+      "p_value": null,
+      "quantum_measurement": {
+        "phi": 0.0,
+        "num_elements": 2,
+        "state_space_size": 4,
+        "mip": {
+          "subset_a": [
+            0
+          ],
+          "subset_b": [
+            1
+          ],
+          "information_loss": 0.0
+        },
+        "num_partitions": 1,
+        "method": "IIT_Quantum_Reservoir",
+        "metrics": {
+          "effective_neurons": 4.0,
+          "entropy": 2.6835642376329636,
+          "num_oscillators": 2.0
+        }
+      },
+      "classical_measurement": {
+        "phi": 0.0,
+        "num_elements": 2,
+        "state_space_size": 8,
+        "mip": {
+          "subset_a": [
+            0
+          ],
+          "subset_b": [
+            1
+          ],
+          "information_loss": 0.0
+        },
+        "num_partitions": 1,
+        "method": "IIT_Classical",
+        "metrics": {
+          "entropy": 2.6835642376329636,
+          "state_space_size": 8.0,
+          "num_elements": 2.0
+        }
+      }
+    },
+    {
+      "phi_quantum": 0.0,
+      "phi_classical": 0.0,
+      "phi_ratio": 1.0,
+      "hypothesis_confirmed": false,
+      "p_value": null,
+      "quantum_measurement": {
+        "phi": 0.0,
+        "num_elements": 3,
+        "state_space_size": 8,
+        "mip": {
+          "subset_a": [
+            0
+          ],
+          "subset_b": [
+            1,
+            2
+          ],
+          "information_loss": 0.0
+        },
+        "num_partitions": 3,
+        "method": "IIT_Quantum_Reservoir",
+        "metrics": {
+          "effective_neurons": 8.0,
+          "num_oscillators": 3.0,
+          "entropy": 3.2853916251921835
+        }
+      },
+      "classical_measurement": {
+        "phi": 0.0,
+        "num_elements": 3,
+        "state_space_size": 12,
+        "mip": {
+          "subset_a": [
+            0
+          ],
+          "subset_b": [
+            1,
+            2
+          ],
+          "information_loss": 0.0
+        },
+        "num_partitions": 3,
+        "method": "IIT_Classical",
+        "metrics": {
+          "state_space_size": 12.0,
+          "entropy": 3.2853916251921835,
+          "num_elements": 3.0
+        }
+      }
+    },
+    {
+      "phi_quantum": 0.0005728429408442537,
+      "phi_classical": 0.0005728429408442537,
+      "phi_ratio": 1.0,
+      "hypothesis_confirmed": false,
+      "p_value": null,
+      "quantum_measurement": {
+        "phi": 0.0005728429408442537,
+        "num_elements": 4,
+        "state_space_size": 16,
+        "mip": {
+          "subset_a": [
+            2
+          ],
+          "subset_b": [
+            0,
+            1,
+            3
+          ],
+          "information_loss": 0.0005728429408442537
+        },
+        "num_partitions": 7,
+        "method": "IIT_Quantum_Reservoir",
+        "metrics": {
+          "entropy": 3.7153793258878256,
+          "num_oscillators": 4.0,
+          "effective_neurons": 16.0
+        }
+      },
+      "classical_measurement": {
+        "phi": 0.0005728429408442537,
+        "num_elements": 4,
+        "state_space_size": 16,
+        "mip": {
+          "subset_a": [
+            2
+          ],
+          "subset_b": [
+            0,
+            1,
+            3
+          ],
+          "information_loss": 0.0005728429408442537
+        },
+        "num_partitions": 7,
+        "method": "IIT_Classical",
+        "metrics": {
+          "state_space_size": 16.0,
+          "num_elements": 4.0,
+          "entropy": 3.7153793258878256
+        }
+      }
+    },
+    {
+      "phi_quantum": 0.0,
+      "phi_classical": 0.0,
+      "phi_ratio": 1.0,
+      "hypothesis_confirmed": false,
+      "p_value": null,
+      "quantum_measurement": {
+        "phi": 0.0,
+        "num_elements": 2,
+        "state_space_size": 4,
+        "mip": {
+          "subset_a": [
+            0
+          ],
+          "subset_b": [
+            1
+          ],
+          "information_loss": 0.0
+        },
+        "num_partitions": 1,
+        "method": "IIT_Quantum_Reservoir",
+        "metrics": {
+          "entropy": 2.7182122397350614,
+          "effective_neurons": 4.0,
+          "num_oscillators": 2.0
+        }
+      },
+      "classical_measurement": {
+        "phi": 0.0,
+        "num_elements": 2,
+        "state_space_size": 8,
+        "mip": {
+          "subset_a": [
+            0
+          ],
+          "subset_b": [
+            1
+          ],
+          "information_loss": 0.0
+        },
+        "num_partitions": 1,
+        "method": "IIT_Classical",
+        "metrics": {
+          "num_elements": 2.0,
+          "entropy": 2.7182122397350614,
+          "state_space_size": 8.0
+        }
+      }
+    },
+    {
+      "phi_quantum": 0.0,
+      "phi_classical": 0.0,
+      "phi_ratio": 1.0,
+      "hypothesis_confirmed": false,
+      "p_value": null,
+      "quantum_measurement": {
+        "phi": 0.0,
+        "num_elements": 3,
+        "state_space_size": 8,
+        "mip": {
+          "subset_a": [
+            0
+          ],
+          "subset_b": [
+            1,
+            2
+          ],
+          "information_loss": 0.0
+        },
+        "num_partitions": 3,
+        "method": "IIT_Quantum_Reservoir",
+        "metrics": {
+          "entropy": 3.317066476670841,
+          "num_oscillators": 3.0,
+          "effective_neurons": 8.0
+        }
+      },
+      "classical_measurement": {
+        "phi": 0.0,
+        "num_elements": 3,
+        "state_space_size": 12,
+        "mip": {
+          "subset_a": [
+            0
+          ],
+          "subset_b": [
+            1,
+            2
+          ],
+          "information_loss": 0.0
+        },
+        "num_partitions": 3,
+        "method": "IIT_Classical",
+        "metrics": {
+          "num_elements": 3.0,
+          "entropy": 3.317066476670841,
+          "state_space_size": 12.0
+        }
+      }
+    },
+    {
+      "phi_quantum": 0.0004324601372189818,
+      "phi_classical": 0.0004324601372189818,
+      "phi_ratio": 1.0,
+      "hypothesis_confirmed": false,
+      "p_value": null,
+      "quantum_measurement": {
+        "phi": 0.0004324601372189818,
+        "num_elements": 4,
+        "state_space_size": 16,
+        "mip": {
+          "subset_a": [
+            2
+          ],
+          "subset_b": [
+            0,
+            1,
+            3
+          ],
+          "information_loss": 0.0004324601372189818
+        },
+        "num_partitions": 7,
+        "method": "IIT_Quantum_Reservoir",
+        "metrics": {
+          "entropy": 3.7444544402353186,
+          "effective_neurons": 16.0,
+          "num_oscillators": 4.0
+        }
+      },
+      "classical_measurement": {
+        "phi": 0.0004324601372189818,
+        "num_elements": 4,
+        "state_space_size": 16,
+        "mip": {
+          "subset_a": [
+            2
+          ],
+          "subset_b": [
+            0,
+            1,
+            3
+          ],
+          "information_loss": 0.0004324601372189818
+        },
+        "num_partitions": 7,
+        "method": "IIT_Classical",
+        "metrics": {
+          "state_space_size": 16.0,
+          "entropy": 3.7444544402353186,
+          "num_elements": 4.0
+        }
+      }
+    }
+  ],
+  "avg_phi_quantum": 0.0012042450863068174,
+  "avg_phi_classical": 0.0012042450863068174,
+  "std_phi_quantum": 0.0036869791324711807,
+  "std_phi_classical": 0.0036869791324711807,
+  "hypothesis_confirmation_rate": 0.0,
+  "wall_time": 0.000945625,
+  "metadata": {
+    "timestamp": "2025-11-11T00:16:32.346882+00:00",
+    "num_oscillators": [
+      2,
+      3,
+      4,
+      2,
+      3,
+      4,
+      2,
+      3,
+      4,
+      2,
+      3,
+      4,
+      2,
+      3,
+      4
+    ],
+    "effective_neurons": [
+      4,
+      8,
+      16,
+      4,
+      8,
+      16,
+      4,
+      8,
+      16,
+      4,
+      8,
+      16,
+      4,
+      8,
+      16
+    ],
+    "classical_sizes": [
+      2,
+      3,
+      4
+    ]
+  }
+}

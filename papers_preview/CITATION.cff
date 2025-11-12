@@ -1,0 +1,80 @@
+cff-version: 1.2.0
+message: "If you use this software or research, please cite it as below."
+authors:
+  - family-names: "Molina Burgos"
+    given-names: "Francisco"
+    orcid: "https://orcid.org/0009-0008-6093-8267"
+title: "Cortexia Research Portfolio: Mathematical Foundations of Consciousness Science and Adaptive AI"
+version: 1.0.0
+date-released: 2025-11-12
+url: "https://github.com/Yatrogenesis/cortexia"
+repository-code: "https://github.com/Yatrogenesis/cortexia"
+keywords:
+  - integrated information theory
+  - consciousness
+  - quantum systems
+  - neuroplasticity
+  - adaptive AI
+  - cognitive augmentation
+  - computational security
+  - password cryptanalysis
+  - Rust
+  - mathematical modeling
+license: Apache-2.0
+abstract: >
+  Portfolio of 6 research papers advancing mathematical and computational
+  foundations of consciousness science, adaptive AI systems, and computational
+  security. Includes: (1) Polynomial-time quantum Φ calculation, (2) Neuroplastic
+  OS theoretical framework, (3) Topological password cryptanalysis, (4) NOS
+  experimental validation, (5) Cognitive augmentation framework, (6) Production
+  Rust IIT library. All papers validated with N=50 statistical testing
+  (p < 10⁻¹⁶) and proprietary multi-method validation suite (18 tests, 72%
+  independent).
+references:
+  - type: article
+    title: "Hierarchical Φ: Polynomial-Time Quantum Integrated Information Theory"
+    authors:
+      - family-names: "Molina Burgos"
+        given-names: "Francisco"
+    year: 2025
+    journal: "Physical Review E (submitted)"
+
+  - type: article
+    title: "Neuroplastic Operating Systems: Theoretical Framework for Adaptive AI"
+    authors:
+      - family-names: "Molina Burgos"
+        given-names: "Francisco"
+    year: 2025
+    journal: "Frontiers in Computational Neuroscience (submitted)"
+
+  - type: article
+    title: "Topological Password Cryptanalysis via Riemannian Geometry"
+    authors:
+      - family-names: "Molina Burgos"
+        given-names: "Francisco"
+    year: 2025
+    journal: "IEEE Transactions on Information Forensics and Security (submitted)"
+
+  - type: article
+    title: "Experimental Validation of Neuroplastic Operating Systems"
+    authors:
+      - family-names: "Molina Burgos"
+        given-names: "Francisco"
+    year: 2025
+    journal: "Frontiers in Artificial Intelligence (submitted)"
+
+  - type: article
+    title: "Cálculo de Significados: Computational Framework for Cognitive Augmentation"
+    authors:
+      - family-names: "Molina Burgos"
+        given-names: "Francisco"
+    year: 2025
+    journal: "Cognitive Systems Research (submitted)"
+
+  - type: software
+    title: "Rust IIT Library: Production Implementation of Integrated Information Theory"
+    authors:
+      - family-names: "Molina Burgos"
+        given-names: "Francisco"
+    year: 2025
+    journal: "Journal of Open Source Software (submitted)"

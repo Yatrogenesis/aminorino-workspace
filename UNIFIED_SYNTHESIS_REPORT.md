@@ -9,14 +9,14 @@
 
 ## 📚 CORPUS COMPLETO ANALIZADO
 
-### Papers de Francisco Molina Burgos (1 paper):
+### Papers de Francisco Molina Burgos (4 papers):
 1. **Hierarchical Information Integration Framework** (consciousness_paper.tex) - Paper IEEE en preparación sobre Φ jerárquico
+2. **Natural Occurrences Semantics (NOS) Partes 1 y 2** - Framework informático para significado basado en co-ocurrencias
+3. **Topological Password Cryptanalysis** - Framework matemático usando teoría de manifolds y flujos geométricos (IEEE Transactions)
+4. **Advanced Neuroplastic Operating Systems** - Fundamentos matemáticos, validación experimental y direcciones futuras (IEEE Transactions on Neural Networks)
 
-### Papers de arXiv Analizados (6 papers):
-2. **Natural Occurrences Semantics (NOS)** - Framework informático para significado basado en co-ocurrencias
-3. **Meaning Calculation Engine** - Motor computacional para NOS con implementación práctica
-4. **Topological Password System** - Sistema de seguridad basado en invariantes topológicos
-5. **QPINN-MAC** (arXiv:2511.07216v1, Chatterjee et al.) - Physics-Informed Neural Networks con gradiente cuántico O(1/√NN)
+### Papers de arXiv Externos (3 papers):
+5. **QPINN-MAC** (arXiv:2511.07216v1) - Physics-Informed Neural Networks con gradiente cuántico O(1/√NN)
 6. **Reed-Solomon List Decoding** (arXiv:2511.05176v1, Chatterjee, Harsha, Kumar - TIFR Mumbai) - Algoritmo determinista con Hensel lifting
 7. **Complexity-as-Advantage (CAA)** (arXiv:2511.04590v1, Oshri Naparstek) - Framework para profundidad lógica vía ventaja de complejidad
 
@@ -376,13 +376,13 @@ approach avoids premature collapse, preserving integration information.
 
 ## 📖 REFERENCIAS COMPLETAS
 
-### Paper de Francisco Molina (En Preparación):
-1. **Hierarchical Information Integration Framework** - IEEE paper (borrador)
+### Papers de Francisco Molina Burgos:
+1. Molina Burgos, F. (2025). **Hierarchical Information Integration Framework for Synthetic Consciousness: A Topological Invariant Approach**. IEEE paper (borrador en preparación).
+2. Molina Burgos, F. (2025). **Neuroplastic Operating Systems: Theoretical Foundations and Viability for Autonomous Artificial Intelligence Development** (Partes 1 y 2).
+3. Molina Burgos, F. (2025). **Topological Password Cryptanalysis: A Rigorous Mathematical Framework Using Manifold Theory and Geometric Flow Convergence**. IEEE Transactions on Information Forensics and Security (en revisión).
+4. Molina Burgos, F. (2025). **Advanced Neuroplastic Operating Systems: Mathematical Foundations, Experimental Validation and Future Directions**. IEEE Transactions on Neural Networks and Learning Systems (en revisión).
 
-### Papers de arXiv Analizados:
-2. [Autor(es) NOS]. **Natural Occurrences Semantics: An Information-Theoretic Framework for Meaning**. [Detalles de publicación pendientes]
-3. [Autor(es) Meaning Calc]. **Meaning Calculation Engine**. [Detalles de publicación pendientes]
-4. [Autor(es) Topo Password]. **Topological Password System**. [Detalles de publicación pendientes]
+### Papers de arXiv Externos:
 5. Chatterjee, S., Harsha, P., & Kumar, M. (2025). **Deterministic list decoding of Reed-Solomon codes via Hensel lifting**. arXiv:2511.05176v1. [TIFR Mumbai]
 6. Naparstek, O. (2025). **Complexity as advantage: Connecting logical depth and complexity advantage**. arXiv:2511.04590v1.
 7. [Autor(es) QPINN-MAC]. (2025). **Quantum Physics-Informed Neural Networks with Multiple Architectural Configurations**. arXiv:2511.07216v1.

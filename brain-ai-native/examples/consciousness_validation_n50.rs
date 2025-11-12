@@ -16,12 +16,11 @@
 //! Expected runtime: ~17 minutes on Apple M1
 
 use brain_ai_native::prelude::*;
-use brain_ai_native::BrainResult;
-use rand::{Rng, thread_rng};
+use rand::Rng;
 use std::fs;
 use std::time::Instant;
 
-fn main() -> BrainResult<()> {
+fn main() -> std::result::Result<(), Box<dyn std::error::Error>> {
     println!("\n╔══════════════════════════════════════════════════════════════════╗");
     println!("║   STATISTICAL VALIDATION EXPERIMENT (n=50)                       ║");
     println!("║                                                                  ║");

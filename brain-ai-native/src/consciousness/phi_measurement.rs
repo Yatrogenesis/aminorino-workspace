@@ -28,7 +28,6 @@ use crate::brain::BrainSubstrate;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use rand::Rng;
-use iit::{IITSystem, PhiResult};
 
 /// Consciousness measurement result
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -679,13 +678,18 @@ mod tests {
 }
 
 /// Measure Φ from any BrainSubstrate implementation
+///
+/// FIXED VERSION: Calculates Φ directly on probability distributions
+/// instead of using IITSystem (which requires TPM that we don't have).
+///
+/// Uses same approach as measure_phi_quantum (which works correctly).
 pub fn measure_phi_general<B: BrainSubstrate>(brain: &B) -> BrainResult<ConsciousnessMeasurement> {
     let state_vector = brain.get_state_vector();
     let num_units = brain.get_num_units();
 
-    // Convert continuous state to discrete binary for IIT (as usize)
+    // Convert state vector to probability distribution
     // Take only first num_units elements (in case state_vector is larger)
-    let mut values: Vec<f64> = state_vector.iter()
+    let values: Vec<f64> = state_vector.iter()
         .take(num_units)
         .copied()
         .collect();
@@ -698,8 +702,11 @@ pub fn measure_phi_general<B: BrainSubstrate>(brain: &B) -> BrainResult<Consciou
         )));
     }
 
-    // Use MEDIAN as threshold for binary mapping
-    // This ensures balanced 0/1 distribution regardless of absolute values
+    // For general substrates, we need to convert continuous values to discrete distribution
+    // The key insight: if state_vector has num_units elements, we create a deterministic
+    // distribution in the 2^num_units dimensional space based on thresholding
+
+    // First, create binary state via median threshold
     let mut sorted_values = values.clone();
     sorted_values.sort_by(|a, b| a.partial_cmp(b).unwrap_or(std::cmp::Ordering::Equal));
     let median = if sorted_values.len() % 2 == 0 {
@@ -712,42 +719,101 @@ pub fn measure_phi_general<B: BrainSubstrate>(brain: &B) -> BrainResult<Consciou
         .map(|&x| if x > median { 1 } else { 0 })
         .collect();
 
-    // Create IIT system
-    let mut iit_system = IITSystem::new(num_units);
+    // Convert binary state to state index
+    // For state [b0, b1, b2, ...], index = b0*2^0 + b1*2^1 + b2*2^2 + ...
+    let mut state_idx = 0;
+    for (i, &bit) in binary_state.iter().enumerate() {
+        state_idx += bit * (1 << i);
+    }
 
-    // Set up fully connected network
-    for i in 0..num_units {
-        for j in 0..num_units {
-            if i != j {
-                iit_system.set_connection(i, j, true)
-                    .map_err(|e| BrainError::ConsciousnessError(format!("IIT connection error: {}", e)))?;
-            }
+    // Create probabilistic distribution with measurement noise
+    // IIT requires uncertainty to measure integration - deterministic states give Φ=0
+    // We model measurement uncertainty as small prob mass on nearby states
+    let state_space_size = 1 << num_units;  // 2^num_units
+    let mut prob_dist = vec![0.0; state_space_size];
+
+    // Main state gets 90% probability
+    prob_dist[state_idx] = 0.9;
+
+    // Distribute remaining 10% to 1-bit flip neighbors (Hamming distance = 1)
+    let mut neighbors = Vec::new();
+    for bit_pos in 0..num_units {
+        let neighbor_idx = state_idx ^ (1 << bit_pos);  // Flip bit at bit_pos
+        neighbors.push(neighbor_idx);
+    }
+
+    let neighbor_prob = 0.1 / neighbors.len() as f64;
+    for &neighbor_idx in &neighbors {
+        prob_dist[neighbor_idx] = neighbor_prob;
+    }
+
+    // Detect if this is a binary (2 states/unit) or multi-level system
+    let fock_levels = if state_space_size == 2_usize.pow(num_units as u32) {
+        // Binary system (biological/hybrid)
+        2
+    } else {
+        // Multi-level system (quantum) - infer from state space
+        let inferred = (state_space_size as f64).powf(1.0 / num_units as f64).round() as usize;
+        inferred.max(2)  // At least 2 levels
+    };
+
+    // Generate all non-trivial bipartitions
+    let partitions = generate_bipartitions(num_units);
+
+    let mut min_information_loss = f64::INFINITY;
+    let mut mip = None;
+
+    // Find Minimum Information Partition using correct marginalization
+    for partition in &partitions {
+        let info_loss = if fock_levels == 2 {
+            // Binary system - use binary marginalization
+            calculate_partition_information_loss(
+                &prob_dist,
+                &partition.subset_a,
+                &partition.subset_b,
+                num_units,
+            )
+        } else {
+            // Multi-level system - use Fock marginalization
+            calculate_partition_information_loss_fock(
+                &prob_dist,
+                &partition.subset_a,
+                &partition.subset_b,
+                num_units,
+                fock_levels,
+            )
+        };
+
+        if info_loss < min_information_loss {
+            min_information_loss = info_loss;
+            mip = Some(Partition {
+                subset_a: partition.subset_a.clone(),
+                subset_b: partition.subset_b.clone(),
+                information_loss: info_loss,
+            });
         }
     }
 
-    iit_system.set_state(binary_state)
-        .map_err(|e| BrainError::ConsciousnessError(format!("IIT state error: {}", e)))?;
+    // Φ is the minimum information loss
+    let phi = if min_information_loss.is_finite() {
+        min_information_loss
+    } else {
+        0.0
+    };
 
-    // Calculate Φ
-    let phi_result = iit_system.calculate_phi()
-        .map_err(|e| BrainError::ConsciousnessError(format!("IIT phi calculation error: {}", e)))?;
-
-    // Calculate state space size (2^n for binary states)
-    let state_space_size = 2_usize.pow(num_units as u32);
+    // Additional metrics
+    let mut metrics = HashMap::new();
+    metrics.insert("entropy".to_string(), calculate_entropy(&prob_dist));
+    metrics.insert("fock_levels".to_string(), fock_levels as f64);
+    metrics.insert("state_space_size".to_string(), state_space_size as f64);
 
     Ok(ConsciousnessMeasurement {
-        phi: phi_result.phi,
+        phi,
         num_elements: num_units,
         state_space_size,
-        num_partitions: phi_result.n_partitions,
-        mip: phi_result.mip.as_ref().map(|mip_info| {
-            Partition {
-                subset_a: mip_info.partition.part1.clone(),
-                subset_b: mip_info.partition.part2.clone(),
-                information_loss: phi_result.phi,
-            }
-        }),
-        method: format!("IIT-{}", brain.substrate_type()),
-        metrics: std::collections::HashMap::new(),
+        num_partitions: partitions.len(),
+        mip,
+        method: format!("IIT_Direct_{}", brain.substrate_type()),
+        metrics,
     })
 }

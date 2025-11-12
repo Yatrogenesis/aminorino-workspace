@@ -1,0 +1,338 @@
+[
+  [
+    "Small",
+    {
+      "quantum_phi": 0.0,
+      "biological_phi": 0.0,
+      "hybrid_phi": 0.0,
+      "quantum_measurement": {
+        "phi": 0.0,
+        "num_elements": 4,
+        "state_space_size": 16,
+        "mip": {
+          "subset_a": [
+            0
+          ],
+          "subset_b": [
+            1,
+            2,
+            3
+          ],
+          "information_loss": 0.0
+        },
+        "num_partitions": 14,
+        "method": "IIT-Quantum",
+        "metrics": {}
+      },
+      "biological_measurement": {
+        "phi": 0.0,
+        "num_elements": 4,
+        "state_space_size": 16,
+        "mip": {
+          "subset_a": [
+            0
+          ],
+          "subset_b": [
+            1,
+            2,
+            3
+          ],
+          "information_loss": 0.0
+        },
+        "num_partitions": 14,
+        "method": "IIT-Biological",
+        "metrics": {}
+      },
+      "hybrid_measurement": {
+        "phi": 0.0,
+        "num_elements": 4,
+        "state_space_size": 16,
+        "mip": {
+          "subset_a": [
+            0
+          ],
+          "subset_b": [
+            1,
+            2,
+            3
+          ],
+          "information_loss": 0.0
+        },
+        "num_partitions": 14,
+        "method": "IIT-Hybrid",
+        "metrics": {}
+      },
+      "quantum_units": 4,
+      "biological_units": 4,
+      "hybrid_units": 4,
+      "comparison": {
+        "hybrid_quantum_ratio": null,
+        "hybrid_biological_ratio": null,
+        "quantum_biological_ratio": null,
+        "winner": "Biological",
+        "hypothesis_confirmed": false
+      }
+    }
+  ],
+  [
+    "Medium",
+    {
+      "quantum_phi": 0.0,
+      "biological_phi": 0.0,
+      "hybrid_phi": 0.0,
+      "quantum_measurement": {
+        "phi": 0.0,
+        "num_elements": 6,
+        "state_space_size": 64,
+        "mip": {
+          "subset_a": [
+            0
+          ],
+          "subset_b": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "information_loss": 0.0
+        },
+        "num_partitions": 62,
+        "method": "IIT-Quantum",
+        "metrics": {}
+      },
+      "biological_measurement": {
+        "phi": 0.0,
+        "num_elements": 6,
+        "state_space_size": 64,
+        "mip": {
+          "subset_a": [
+            0
+          ],
+          "subset_b": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "information_loss": 0.0
+        },
+        "num_partitions": 62,
+        "method": "IIT-Biological",
+        "metrics": {}
+      },
+      "hybrid_measurement": {
+        "phi": 0.0,
+        "num_elements": 6,
+        "state_space_size": 64,
+        "mip": {
+          "subset_a": [
+            0
+          ],
+          "subset_b": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "information_loss": 0.0
+        },
+        "num_partitions": 62,
+        "method": "IIT-Hybrid",
+        "metrics": {}
+      },
+      "quantum_units": 6,
+      "biological_units": 6,
+      "hybrid_units": 6,
+      "comparison": {
+        "hybrid_quantum_ratio": null,
+        "hybrid_biological_ratio": null,
+        "quantum_biological_ratio": null,
+        "winner": "Biological",
+        "hypothesis_confirmed": false
+      }
+    }
+  ],
+  [
+    "Large",
+    {
+      "quantum_phi": 0.0,
+      "biological_phi": 0.0,
+      "hybrid_phi": 0.0,
+      "quantum_measurement": {
+        "phi": 0.0,
+        "num_elements": 8,
+        "state_space_size": 256,
+        "mip": {
+          "subset_a": [
+            0
+          ],
+          "subset_b": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "information_loss": 0.0
+        },
+        "num_partitions": 254,
+        "method": "IIT-Quantum",
+        "metrics": {}
+      },
+      "biological_measurement": {
+        "phi": 0.0,
+        "num_elements": 8,
+        "state_space_size": 256,
+        "mip": {
+          "subset_a": [
+            0
+          ],
+          "subset_b": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "information_loss": 0.0
+        },
+        "num_partitions": 254,
+        "method": "IIT-Biological",
+        "metrics": {}
+      },
+      "hybrid_measurement": {
+        "phi": 0.0,
+        "num_elements": 8,
+        "state_space_size": 256,
+        "mip": {
+          "subset_a": [
+            0
+          ],
+          "subset_b": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "information_loss": 0.0
+        },
+        "num_partitions": 254,
+        "method": "IIT-Hybrid",
+        "metrics": {}
+      },
+      "quantum_units": 8,
+      "biological_units": 8,
+      "hybrid_units": 8,
+      "comparison": {
+        "hybrid_quantum_ratio": null,
+        "hybrid_biological_ratio": null,
+        "quantum_biological_ratio": null,
+        "winner": "Biological",
+        "hypothesis_confirmed": false
+      }
+    }
+  ],
+  [
+    "XLarge",
+    {
+      "quantum_phi": 0.0,
+      "biological_phi": 0.0,
+      "hybrid_phi": 0.0,
+      "quantum_measurement": {
+        "phi": 0.0,
+        "num_elements": 10,
+        "state_space_size": 1024,
+        "mip": {
+          "subset_a": [
+            0
+          ],
+          "subset_b": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "information_loss": 0.0
+        },
+        "num_partitions": 1022,
+        "method": "IIT-Quantum",
+        "metrics": {}
+      },
+      "biological_measurement": {
+        "phi": 0.0,
+        "num_elements": 10,
+        "state_space_size": 1024,
+        "mip": {
+          "subset_a": [
+            0
+          ],
+          "subset_b": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "information_loss": 0.0
+        },
+        "num_partitions": 1022,
+        "method": "IIT-Biological",
+        "metrics": {}
+      },
+      "hybrid_measurement": {
+        "phi": 0.0,
+        "num_elements": 10,
+        "state_space_size": 1024,
+        "mip": {
+          "subset_a": [
+            0
+          ],
+          "subset_b": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "information_loss": 0.0
+        },
+        "num_partitions": 1022,
+        "method": "IIT-Hybrid",
+        "metrics": {}
+      },
+      "quantum_units": 10,
+      "biological_units": 10,
+      "hybrid_units": 10,
+      "comparison": {
+        "hybrid_quantum_ratio": null,
+        "hybrid_biological_ratio": null,
+        "quantum_biological_ratio": null,
+        "winner": "Biological",
+        "hypothesis_confirmed": false
+      }
+    }
+  ]
+]
